@@ -83,3 +83,29 @@ console.log("77°F equivalem a", grausFahrenEmKelvin, "°K.");
 console.log("80°C equivalem a", grausCelsiusEmFahren, "°F.");
 console.log("30°C equivalem a", celsiusEmFahren, "°F, e a", fahrenEmKelvin, "°K");
 
+// 3)
+// a)
+const valorDoUsuario = +prompt("Insira um valor em lb para converter em quilos.");
+const libraParaKg =  valorDoUsuario / 2.2046;
+
+console.log(`${valorDoUsuario}lb equivalem a ${libraParaKg}kg.`);
+
+// b) 
+const ozParaKg = 10.5 / 35.274;
+console.log(`10.5oz equivalem a ${ozParaKg}kg.`);
+
+// c)
+const milhasParaMetros = 100 / 0.0062137;
+console.log(`100mi equivalem a ${milhasParaMetros}M.`);
+
+// d)
+const pesParaMetros = 50 / 3.2808;
+console.log(`50ft equivalem a ${pesParaMetros}M.`);
+
+// e)
+const galaoParaLitro = 103.56 / 0.26417;
+console.log(`103.56gal equivalem a ${galaoParaLitro}L.`); 
+
+// f)
+const xicarasParaLitros = (450 * 6) / 25;
+console.log(`450xic equivlem a ${xicarasParaLitros}L.`);
