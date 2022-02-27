@@ -98,6 +98,7 @@ const somaParametros = (parametro1, parametro2) => {
     mostraParametro(soma);
 }
 
+mostraParametro(2);
 somaParametros(4, 6);
 
 // b)
