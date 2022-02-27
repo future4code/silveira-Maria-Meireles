@@ -121,3 +121,35 @@ const numerosMaioresEmenores = (lista) => {
 };
 
 numerosMaioresEmenores(arrayOriginal);
+
+// DESAFIOS: 
+
+// 1)
+alert ("O computador começará escolhendo um número.");
+
+const numeroDoComputador = Math.round(Math.random() * 100);
+alert("Agora vamos jogar!");
+
+let contador = 0;
+let chuteJogadorDois;
+
+while (chuteJogadorDois !== numeroDoComputador) {
+    chuteJogadorDois = +prompt("Chute um número");
+
+    console.log(`O número chutado foi: ${chuteJogadorDois}`);
+
+    if (chuteJogadorDois < numeroDoComputador) {
+        console.log(`Errou. O número escolhido é menor`);
+    }
+    else if (chuteJogadorDois > numeroDoComputador) {
+        console.log(`Errou. O número é maior`);
+    };
+
+    contador++;
+};
+alert(`Acertou! O número de tentativas foi: ${contador}.`);
+
+
+// 2) Feito acima.
+
+
