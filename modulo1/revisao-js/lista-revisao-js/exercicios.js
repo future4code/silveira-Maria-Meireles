@@ -7,32 +7,44 @@
 function retornaTamanhoArray(array) {
     return array.length;
    
-}
+};
 
 // EXERCÍCIO 02
 function retornaArrayInvertido(array) {
   return array.reverse();
-}
+};
 
 // EXERCÍCIO 03
 function retornaArrayOrdenado(array) {
-  
+    
 }
 
 // EXERCÍCIO 04
 function retornaNumerosPares(array) {
-  
-}
+    const listaDeNumeros = array;
+    const apenasNumPar = listaDeNumeros.filter((item) => item % 2 === 0 );
+
+    return apenasNumPar;
+};
 
 // EXERCÍCIO 05
 function retornaNumerosParesElevadosADois(array) {
- 
+    const listaDePares = array.filter((numero) => numero % 2 === 0);
+    const paresAoQuadrado = listaDePares.map((numeroPar) => numeroPar * numeroPar);
+   
+    return paresAoQuadrado;
 }
 
 // EXERCÍCIO 06
 function retornaMaiorNumero(array) {
-  
-}
+    maiorNumero = 0;
+    for (numero of array) {
+        if (numero > maiorNumero) {
+            maiorNumero = numero;
+        };
+    };
+    return maiorNumero;
+};
 
 // EXERCÍCIO 07
 function retornaObjetoEntreDoisNumeros(num1, num2) {
