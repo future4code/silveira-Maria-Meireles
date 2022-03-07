@@ -122,7 +122,6 @@ const numerosMaioresEmenores = (lista) => {
 
 numerosMaioresEmenores(arrayOriginal);
 
-// DESAFIOS: 
 
 // 1)
 alert ("O computador começará escolhendo um número.");
@@ -151,5 +150,4 @@ alert(`Acertou! O número de tentativas foi: ${contador}.`);
 
 
 // 2) Feito acima.
-
 
