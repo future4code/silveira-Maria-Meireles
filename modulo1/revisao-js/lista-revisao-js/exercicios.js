@@ -48,8 +48,19 @@ function retornaMaiorNumero(array) {
 
 // EXERCÍCIO 07
 function retornaObjetoEntreDoisNumeros(num1, num2) {
+    const objetoNumero = {};
+    const maiorNumero = num1 > num2 ? num1 : num2;
+    const menorNumero = num1 < num2 ? num1 : num2;
+    const checaDivisibilidade = maiorNumero % menorNumero === 0;
+    const diferenca = maiorNumero - menorNumero;
 
-}
+    objetoNumero["maiorNumero"] = maiorNumero;
+    objetoNumero["maiorDivisivelPorMenor"] = checaDivisibilidade;
+    objetoNumero["diferenca"] = diferenca;
+
+        return objetoNumero;
+};
+
 
 // EXERCÍCIO 08
 function retornaNPrimeirosPares(n) {
