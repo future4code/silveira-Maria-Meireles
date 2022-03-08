@@ -83,13 +83,18 @@ function classificaTriangulo(ladoA, ladoB, ladoC) {
     }
     else if (ladoA !== ladoB && ladoB !== ladoC) {
         return `Escaleno`;
-    }
-}
+    };
+};
 
 // EXERCÍCIO 10
 function retornaSegundoMaiorESegundoMenor(array) {
-  
-}
+    const listaEmCrescente = array.sort((numeroUm, numeroDois) => numeroUm - numeroDois);
+
+    const segundoMenorNumero = listaEmCrescente[1];
+    const segundoMaiorNumero = listaEmCrescente[listaEmCrescente.length - 2];
+
+    return[segundoMaiorNumero, segundoMenorNumero];
+};
 
 // EXERCÍCIO 11
 function retornaChamadaDeFilme(filme) {
