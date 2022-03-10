@@ -113,7 +113,7 @@ td button {
     border-radius: 5px;
     color: black;
 }
-td button:active {
+td .botao-comprar:active {
     color: white;
 }
  
@@ -137,6 +137,13 @@ td .botao-comprar:hover {
     width: 25px;
 }
 
+#link-de-busca:hover {
+    opacity: 0.5;
+}
+
+#link-de-busca:active {
+    opacity: 1;
+}
 
 #back-button {
     background-color: white;
