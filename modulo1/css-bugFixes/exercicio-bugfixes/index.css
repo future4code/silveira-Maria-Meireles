@@ -126,6 +126,11 @@ td .botao-comprar:hover {
     height: 100px;
 }
 
+#barra-de-busca {
+    border: none;
+    border-bottom: 3px solid black;
+}
+
 .icone {
     background-color: white;
     height: 25px;
