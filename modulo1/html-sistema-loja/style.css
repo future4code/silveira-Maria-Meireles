@@ -1,0 +1,202 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial;
+  }
+   
+  body {
+      background-color: #e7e7e7;
+      font-size: 16px;
+  }
+
+  /* Página de adicionar produtos: */
+  input {
+      border-radius: 10px;
+      border: none;
+      margin-bottom: 8px;
+      padding: 10px;
+  }
+  button {
+      border: none;
+      border-radius: 10px;
+      padding: 10px;
+  }
+   
+  /* ================================= */
+
+.icon-redes-sociais{
+    width: 5%;
+}
+
+.img-livro {
+    width: 60px;
+    margin: 0px 0px 0px 130px;
+}
+
+  #titulo {
+    background-color: rgba(0,0,0,0.9);
+    color: #fff;
+    font-weight: bold;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+   
+  .menu a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    margin-right: 10px;
+    font-size: 13px
+  }
+   
+  .menu{
+    display: flex;
+    justify-content: center;
+    background-color: rgba(0,0,0,0.8);
+    height: 50px;
+    align-items: center;
+  }
+   
+  #titulo:hover{
+    color: orange;
+    transition: 0.4s;
+  }
+   
+  a:hover{
+    color: orange;
+    transition: 0.4s;
+  }
+   
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: around;
+    align-content: center;
+    align-items: center;
+  }
+   
+  #espacamento {
+    margin: 30px;
+  }
+   
+  footer {
+    position: absolute;
+    bottom: 0;
+    left: center;
+    background-color: rgba(0,0,0,0.8);
+    width: 100%;
+    font-size: 16px;
+    font-weight: 100;
+    color: white;
+    text-align: center;
+  }
+   
+  footer:hover{
+    color: orange;
+    transition: 0.4s; 
+  }
+  
+  RAW Paste Data
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial;
+  }
+  
+  body {
+      background-color: #e7e7e7;
+      font-size: 16px;
+  }
+  .icon-redes-sociais{
+      width: 5%;
+  }
+  /* Página de controle de estoque: */
+  .img-livro {
+      width: 60px;
+      margin: 0px 0px 0px 130px;
+  }
+  /* Página de adicionar produtos: */
+  input {
+      border-radius: 10px;
+      border: none;
+      margin-bottom: 8px;
+      padding: 10px;
+  }
+  button {
+      border: none;
+      border-radius: 10px;
+      padding: 10px;
+  }
+  
+  /* ================================= */
+  #titulo {
+    background-color: rgba(0,0,0,0.9);
+    color: #fff;
+    font-weight: bold;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .menu a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    margin-right: 10px;
+    font-size: 13px
+  }
+  
+  .menu{
+    display: flex;
+    justify-content: center;
+    background-color: rgba(0,0,0,0.8);
+    height: 50px;
+    align-items: center;
+  }
+  
+  #titulo:hover{
+    color: orange;
+    transition: 0.4s;
+  }
+  
+  a:hover{
+    color: orange;
+    transition: 0.4s;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: around;
+    align-content: center;
+    align-items: center;
+  }
+  
+  #espacamento {
+    margin: 30px;
+  }
+  
+  footer {
+    position: absolute;
+    bottom: 0;
+    left: center;
+    background-color: rgba(0,0,0,0.8);
+    width: 100%;
+    font-size: 16px;
+    font-weight: 100;
+    color: white;
+    text-align: center;
+  }
+  
+  footer:hover{
+    color: orange;
+    transition: 0.4s; 
+  }
+  
