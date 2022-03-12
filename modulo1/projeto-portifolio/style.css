@@ -1,0 +1,43 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url(./imagens/fundo.jpg);
+}
+
+nav .nav-bar {
+    list-style: none;
+    margin: auto;
+    padding: 15px;
+    position: sticky;
+}
+
+nav .nav-bar li {
+    display: inline;
+}
+
+nav .nav-bar li a {
+    color: rgb(232, 246, 73);
+    font-family: 'Quicksand', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+header nav .nav-bar li a:hover {
+    color: white;
+}
+
+main aside {
+    float: right;
+
+}
+main aside #myself {
+    background-color: white;
+    border-radius: 50%;
+    border: 15px solid rgb(52, 8, 110);
+    margin: 100px 140px;
+    padding: 8px;
+    width: 300px;
+
+}
+
