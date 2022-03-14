@@ -1,0 +1,144 @@
+* {
+    font-family: 'Quicksand', Arial;
+    margin: 0;
+    padding: 0;
+}
+
+.home-page {
+    background-color: rgb(94, 75, 81);
+    height:630px;
+}
+.home-menu {
+    display: inline-block;
+}
+.home-menu-option {
+    font-family: 'Rajdhani', Arial;
+    font-weight: 600;
+    font-size: 25px;
+    float: left;
+    list-style: none;
+    margin: 20px;
+}
+
+.link-menu {
+    color: rgb(135, 249, 213);
+}
+
+.link-menu :hover {
+    color: white;
+}
+
+.link-menu :active {
+    color: rgb(243, 181, 98);
+}
+
+.picture-container{ 
+    background-color: rgb(135, 249, 213);
+    float: right;
+    max-width: 500px;
+    height: 630px;
+}
+
+.picture-container .profile-picture {
+    border-radius: 50%;
+    border: 15px solid rgb(94, 75, 81);
+    padding: 8px;
+    background-color: white;
+    margin-top: 25%;
+    margin-left: -100px;
+    margin-right: 0px;
+    width: 70%;
+}
+
+.home-container {
+    color: white;
+    font-family: 'Quicksand', Arial;
+    margin-top: 150px;
+    margin-left: 100px;
+    width: 40%;
+    text-align: center;
+}
+
+.about-me {
+    padding-top: 15px;
+    text-align: justify;
+}
+
+.courses-section{
+    max-width: 70%;
+    margin: auto;
+    padding-bottom: 200px;;
+}
+
+.knowledge-container {
+    float: right;
+    padding: 30px;
+}
+
+.courses-section .instituition-image .Logo-labenu {
+    border-radius: 50%;
+    border: 20px solid rgb(135, 249, 213); 
+    padding: 20px;
+    width: 200px;
+}
+
+.courses-title {
+    color: rgb(243, 181, 98);
+    font-size: 60px;
+    padding: 40px;
+    text-align: center;
+}
+
+.Labenu-title {
+    color:rgb(135, 249, 213);
+    font-size: 20px;
+    text-decoration: none;
+
+}
+
+.Labenu-title :hover{
+    color: rgb(243, 181, 98);
+}
+
+.Labenu-title :active{
+    color: rgb(135, 249, 213);
+}
+
+.info-container {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    max-width: 80%;
+    margin: auto;
+}
+
+.professional-experience-container, .Abilities-container{
+    border-radius: 50px;
+    display: inline-block;
+    text-align: center;
+    padding: 30px;
+    width: 25%;
+    background-color: rgb(243, 181, 98);
+}
+
+.hard-skills, .soft-skills, .work-list {
+    list-style-type: none;
+    color: white;
+    font-size: 18px;
+}
+
+.info-titles {
+    font-size: 35px;
+    color: white;
+    padding-bottom: 20px;
+}
+
+.page-footer {
+    background-color: rgb(94, 75, 81);
+    color:white;
+    margin-top: 40px;
+    padding: 15px;
+    text-align: center;
+}
+
+/*--------- Página de contato -----------*/
