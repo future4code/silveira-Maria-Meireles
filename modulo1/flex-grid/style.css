@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: mediumvioletred;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+
+}
+header .cabecalho {
+    display: flex;
+    align-items: center;
+}
+.header-cake {
+    margin-right: 15px;
+    width: 30px;
+
+}
+
+img {
+    width: 250px;
+}
+
+main {
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+
+ main .card {
+    box-shadow: 5px 5px 5px 5px darkgrey;
+    max-width: 250px;
+}
+
+footer {
+    padding: 15px;
+    background-color: mediumvioletred;
+    text-align: center;
+}
