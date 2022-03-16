@@ -158,18 +158,4 @@ video {
     video {
         width: 350px;
     }
-    
-    .footer2 {
-          position: fixed;
-          bottom: 0;
-          background-color: rgb(123, 187, 173);
-          width: 100%;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          color: rgb(255, 209, 149);
-          margin-top: 40px;
-          padding: 10px;
-    }
-    
 }
