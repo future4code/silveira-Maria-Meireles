@@ -56,7 +56,21 @@ class App extends React.Component {
   }
 
   selectTarefa = (id) => {
-  }
+  const novaListaDeTarefas = this.state.tarefas.map((tarefa) => {
+    if (id === tarefa.id) {
+      const copiaTarefa = {
+        ...tarefa,
+        completa: !this.state.completa
+      };
+      return copiaTarefa;
+    } else {
+      return tarefa;
+    };
+  });
+
+  this.setState({tarefas: novaListaDeTarefas});
+
+}
 
   onChangeFilter = (event) => {
 
