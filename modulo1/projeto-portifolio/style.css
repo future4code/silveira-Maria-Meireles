@@ -5,7 +5,7 @@
 }
 
 .home-page {
-    background-color: rgb(94, 75, 81);
+    background-color: rgb(69, 21, 49);
     height:630px;
 }
 .home-menu {
@@ -21,7 +21,7 @@
 }
 
 .link-menu {
-    color: rgb(135, 249, 213);
+    color: rgb(179, 9, 63);
 }
 
 .link-menu :hover {
@@ -29,11 +29,11 @@
 }
 
 .link-menu :active {
-    color: rgb(243, 181, 98);
+    color: rgb(165, 190, 250);
 }
 
 .picture-container{ 
-    background-color: rgb(135, 249, 213);
+    background-color: rgb(179, 9, 63);
     float: right;
     max-width: 500px;
     height: 630px;
@@ -41,7 +41,7 @@
 
 .picture-container .profile-picture {
     border-radius: 50%;
-    border: 15px solid rgb(94, 75, 81);
+    border: 15px solid rgb(69, 21, 49);
     padding: 8px;
     background-color: white;
     margin-top: 25%;
@@ -67,7 +67,7 @@
 .courses-section{
     max-width: 70%;
     margin: auto;
-    padding-bottom: 200px;;
+    padding-bottom: 200px;
 }
 
 .knowledge-container {
@@ -77,32 +77,29 @@
 
 .courses-section .instituition-image .Logo-labenu {
     border-radius: 50%;
-    border: 20px solid rgb(135, 249, 213); 
+    border: 20px solid rgb(165, 190, 250); 
     padding: 20px;
     width: 200px;
 }
 
 .courses-title {
-    color: rgb(243, 181, 98);
+    color: rgb(179, 9, 63);
     font-size: 60px;
     padding: 40px;
     text-align: center;
 }
 
 .Labenu-title {
-    color:rgb(135, 249, 213);
+    color:rgb(165, 190, 250);
     font-size: 20px;
     text-decoration: none;
 
 }
 
 .Labenu-title :hover{
-    color: rgb(243, 181, 98);
+    color: rgb(179, 9, 63);
 }
 
-.Labenu-title :active{
-    color: rgb(135, 249, 213);
-}
 
 .info-container {
     display: flex;
@@ -118,7 +115,7 @@
     text-align: center;
     padding: 30px;
     width: 25%;
-    background-color: rgb(243, 181, 98);
+    background-color: rgb(165, 190, 250);
 }
 
 .hard-skills, .soft-skills, .work-list {
@@ -134,7 +131,7 @@
 }
 
 .page-footer {
-    background-color: rgb(94, 75, 81);
+    background-color: rgb(69, 21, 49);
     color:white;
     margin-top: 40px;
     padding: 15px;
