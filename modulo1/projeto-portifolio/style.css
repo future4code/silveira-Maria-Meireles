@@ -5,7 +5,7 @@
 }
 
 .home-page {
-    background-color: rgb(94, 75, 81);
+    background-color: #451531;
     height:630px;
 }
 .home-menu {
@@ -21,7 +21,7 @@
 }
 
 .link-menu {
-    color: rgb(135, 249, 213);
+    color: #b3093f;
 }
 
 .link-menu :hover {
@@ -29,11 +29,11 @@
 }
 
 .link-menu :active {
-    color: rgb(243, 181, 98);
+    color: #a5befa;
 }
 
 .picture-container{ 
-    background-color: rgb(135, 249, 213);
+    background-color: #b3093f;
     float: right;
     max-width: 500px;
     height: 630px;
@@ -41,7 +41,7 @@
 
 .picture-container .profile-picture {
     border-radius: 50%;
-    border: 15px solid rgb(94, 75, 81);
+    border: 15px solid #451531;
     padding: 8px;
     background-color: white;
     margin-top: 25%;
@@ -77,31 +77,31 @@
 
 .courses-section .instituition-image .Logo-labenu {
     border-radius: 50%;
-    border: 20px solid rgb(135, 249, 213); 
+    border: 20px solid #a5befa; 
     padding: 20px;
     width: 200px;
 }
 
 .courses-title {
-    color: rgb(243, 181, 98);
+    color: #b3093f;
     font-size: 60px;
     padding: 40px;
     text-align: center;
 }
 
 .Labenu-title {
-    color:rgb(135, 249, 213);
+    color:#a5befa;
     font-size: 20px;
     text-decoration: none;
 
 }
 
 .Labenu-title :hover{
-    color: rgb(243, 181, 98);
+    color: #b3093f;
 }
 
 .Labenu-title :active{
-    color: rgb(135, 249, 213);
+    color: #a5befa;
 }
 
 .info-container {
@@ -118,7 +118,7 @@
     text-align: center;
     padding: 30px;
     width: 25%;
-    background-color: rgb(243, 181, 98);
+    background-color: #a5befa;
 }
 
 .hard-skills, .soft-skills, .work-list {
@@ -134,7 +134,7 @@
 }
 
 .page-footer {
-    background-color: rgb(94, 75, 81);
+    background-color: #451531;
     color:white;
     margin-top: 40px;
     padding: 15px;
