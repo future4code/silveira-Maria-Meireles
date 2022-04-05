@@ -190,6 +190,149 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "AddTrackToPlaylist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "maria-meireles-silveira",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/f33b89f5-71ef-4afc-8da3-68d1acbfad20/tracks",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						"f33b89f5-71ef-4afc-8da3-68d1acbfad20",
+						"tracks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddTrackToPlaylist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "maria-meireles-silveira",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Roadhouse Blues\",\r\n    \"artist\": \"The Doors\",\r\n    \"url\": \"https://open.spotify.com/track/1Q5kgpp4pmyGqPwNBzkSrw?si=47114161643f45fd\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/f33b89f5-71ef-4afc-8da3-68d1acbfad20/tracks",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						"f33b89f5-71ef-4afc-8da3-68d1acbfad20",
+						"tracks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddTrackToPlaylist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "maria-meireles-silveira",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Carry on\",\r\n    \"artist\": \"Angra\",\r\n    \"url\": \"https://open.spotify.com/track/3f5JMe8WsTVqUMlgWJxhQQ?si=8235bc9750814999\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/3f9f1bcd-ca47-4bc6-86a6-c2c371fb67d4/tracks",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						"3f9f1bcd-ca47-4bc6-86a6-c2c371fb67d4",
+						"tracks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddTrackToPlaylist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "maria-meireles-silveira",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Beyond The Realms of Death\",\r\n    \"artist\": \"Judas Priest\",\r\n    \"url\": \"https://open.spotify.com/track/3Rtv6zRNKpeSygXoaF9kCm?si=ad12d0e64b7247ce\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/3f9f1bcd-ca47-4bc6-86a6-c2c371fb67d4/tracks",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						"3f9f1bcd-ca47-4bc6-86a6-c2c371fb67d4",
+						"tracks"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
