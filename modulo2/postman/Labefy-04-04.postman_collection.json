@@ -29,7 +29,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/",
 					"protocol": "https",
 					"host": [
 						"us-central1-labenu-apis",
@@ -38,7 +38,8 @@
 					],
 					"path": [
 						"labefy",
-						"playlists"
+						"playlists",
+						""
 					]
 				}
 			},
@@ -57,7 +58,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nome\": \"Soul-music\"\r\n}",
+					"raw": "{\r\n    \"name\": \"Soul-music\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -75,6 +76,116 @@
 					"path": [
 						"labefy",
 						"playlists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreatePlaylist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "maria-meireles-silveira",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Rock\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreatePlaylist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "maria-meireles-silveira",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Metal\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddTrackToPlaylist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "maria-meireles-silveira",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Colors\",\r\n    \"artist\": \"Black Pumas\",\r\n    \"url\": \"https://open.spotify.com/track/6d4FWjx72iuRWzn1HwywLK?si=255a793aa2b54923\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/e927ce61-b53c-474f-bc3b-e87bb7b974f7/tracks",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						"e927ce61-b53c-474f-bc3b-e87bb7b974f7",
+						"tracks"
 					]
 				}
 			},
