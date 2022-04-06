@@ -17,23 +17,24 @@ export default class AbaCadastro extends React.Component {
         console.log(this.state.email)
     }
 
-    criaUsuario = () => {
+    criaUsuario = async () => {
     const url = 'https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users';
     const body = {
         name: this.state.nome,
         email: this.state.email
     };
-        axios.post(url, body, {headers: {
+    try {
+        const createUser = await axios.post(url, body, {headers: {
             Authorization: "maria-meireles-silveira"
             }
-        }).then((res) => {
-            console.log(`Usuário cadastrado com sucesso!`)
-            this.setState({nome: " ", email: " "});
-
-        }).catch((err) => {
-            alert(err.message);
         });
+        console.log(`Usuário cadastrado com sucesso!`)
+        this.setState({nome: " ", email: " "});
+    } catch(err) {
+        alert(err.message);
     };
+};
+
 
     render() {
 

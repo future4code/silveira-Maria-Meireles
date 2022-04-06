@@ -10,27 +10,29 @@ export default class ListaUsuarios extends React.Component{
         this.resgataListaDeUsuarios();
     }
 
-    resgataListaDeUsuarios = () => {
+    resgataListaDeUsuarios = async() => {
         const url = "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users";
 
-        axios.get(url, {headers: {
-            Authorization: "maria-meireles-silveira"
-        }}).then((res)=> {
-            this.setState({usuarios: res.data})
-            console.log(res.data)
-        }).catch((err)=>{alert(err.message)})
+        try {
+            const listaResgatada = await axios.get(url, {headers: {
+                Authorization: "maria-meireles-silveira"
+        }});
+            this.setState({usuarios: listaResgatada.data})
+            
+        }catch(err) {alert(err.message)}
     };
 
-    deletaUsuario = (id) => {
+    deletaUsuario = async(id) => {
         const url = `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${id}`
-        axios.delete(url, {headers: {
+        try {
+            const UsuarioDeletado = await axios.delete(url, {headers: {
             Authorization: "maria-meireles-silveira"
-        }}).then((res) => {
+        }});
             alert(`Usuário deletado com sucesso!`);
             this.resgataListaDeUsuarios();
-        }).catch((err) => {
+        }catch(err){
             alert(err.message)
-        });
+        };
     };
 
     render() {
@@ -43,9 +45,12 @@ export default class ListaUsuarios extends React.Component{
 
         return (
             <div>
-                <ul>
-                    {usuariosMapeados}
-                </ul>
+                <h2> Usuários Cadastrados </h2>
+                <div>
+                    <ul>
+                        {usuariosMapeados}
+                    </ul>
+                </div>
             <button onClick={this.props.voltarParaCadastro}> Voltar </button>
             </div>
         )
