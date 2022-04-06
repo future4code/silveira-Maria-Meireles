@@ -1,10 +1,77 @@
 import React from "react";
 import axios from "axios";
+import styled from "styled-components";
+
+const TituloCadastro = styled.h1`
+color: rgb(69, 82, 91);
+width: 80%;
+font-family: arial;
+font-size: 45px;
+font-weight: 600;
+text-align: center;
+margin: 40px 0 40px 0;
+
+span {
+    color: rgb(250, 156, 64);
+}
+
+`
+const ContainerCadastro = styled.div`
+  background-color: rgba(227, 232, 235, 0.9);
+  border-radius: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 15px 0 0 8%;
+  height: 95vh;
+  width: 50%;
+`
+const ContainerInputs = styled.div`
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    width: 80%;
+
+  input{
+    border: none;
+    border-radius: 8px;
+    padding: 22px;
+    width: 60%;
+  }
+
+  label {
+    color: rgb(69, 82, 91);
+    font-family: arial;
+    font-size: 18px;
+    margin: 10px 0 10px 0;
+  }
+
+  button {
+    background-color: rgb(254, 126, 2);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    font-size: 15px;
+    margin-top: 30px;
+    padding: 20px;
+    width: 68%;
+  }
+
+  button:hover {
+    background-color: rgba(254, 126, 2, 0.8);
+  }
+`
+const Botoes = styled.button`
+background-color: rgb(254, 126, 2);
+color: white;
+`
+
 
 export default class AbaCadastro extends React.Component {
     state = {
-        nome: " ",
-        email: " "
+        nome: "",
+        email: ""
     };
 
     digitandoNome = (event) => {
@@ -24,7 +91,7 @@ export default class AbaCadastro extends React.Component {
         email: this.state.email
     };
     try {
-        const createUser = await axios.post(url, body, {headers: {
+        await axios.post(url, body, {headers: {
             Authorization: "maria-meireles-silveira"
             }
         });
@@ -39,10 +106,10 @@ export default class AbaCadastro extends React.Component {
     render() {
 
         return (
-            <div>
-                <h1> Cadastre-se na Labenu </h1>
+            <ContainerCadastro>
+                <TituloCadastro> Cadastre-se na <span> Labenu </span>_ </TituloCadastro>
 
-                <div>
+                <ContainerInputs>
                     <label for={"nome"}> Nome: </label>
                     <input onChange={this.digitandoNome}
                     placeholder={"Nome"}
@@ -55,10 +122,10 @@ export default class AbaCadastro extends React.Component {
                     value={this.state.email}
                     id={"email"} type={"email"}/>
 
-                    <button onClick={this.criaUsuario}> Cadastrar </button>
-                    <button onClick={this.props.trocarParaUsuarios}> Vizualizar usuários </button>
-                </div>
-            </div>
+                    <Botoes onClick={this.criaUsuario}> CADASTRAR </Botoes>
+                    <Botoes onClick={this.props.trocarParaUsuarios}> VIZUALIZAR USUÁRIOS </Botoes>
+                </ContainerInputs>
+            </ContainerCadastro>
 
         )
     }

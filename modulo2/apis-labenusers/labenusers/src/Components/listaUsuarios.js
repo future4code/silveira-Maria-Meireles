@@ -25,7 +25,7 @@ export default class ListaUsuarios extends React.Component{
     deletaUsuario = async(id) => {
         const url = `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${id}`
         try {
-            const UsuarioDeletado = await axios.delete(url, {headers: {
+            await axios.delete(url, {headers: {
             Authorization: "maria-meireles-silveira"
         }});
             alert(`Usuário deletado com sucesso!`);
