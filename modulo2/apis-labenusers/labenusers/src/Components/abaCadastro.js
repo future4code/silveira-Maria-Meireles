@@ -1,7 +1,14 @@
 import React from "react";
 import axios from "axios";
-import styled from "styled-components";
+import styled, {createGlobalStyle} from "styled-components";
+import Fundo from '../assets/fundoLabenusers.jpg'
 
+const FundoPagina = createGlobalStyle`
+body {
+    background-image: url(${Fundo});
+    background-size: cover;
+}
+`
 const TituloCadastro = styled.h1`
 color: rgb(69, 82, 91);
 width: 80%;
@@ -95,8 +102,8 @@ export default class AbaCadastro extends React.Component {
             Authorization: "maria-meireles-silveira"
             }
         });
-        console.log(`Usuário cadastrado com sucesso!`)
         this.setState({nome: " ", email: " "});
+        console.log("Usuário cadastrado com sucesso!")
     } catch(err) {
         alert(err.message);
     };
@@ -106,6 +113,8 @@ export default class AbaCadastro extends React.Component {
     render() {
 
         return (
+            <>
+            <FundoPagina/>
             <ContainerCadastro>
                 <TituloCadastro> Cadastre-se na <span> Labenu </span>_ </TituloCadastro>
 
@@ -126,6 +135,7 @@ export default class AbaCadastro extends React.Component {
                     <Botoes onClick={this.props.trocarParaUsuarios}> VIZUALIZAR USUÁRIOS </Botoes>
                 </ContainerInputs>
             </ContainerCadastro>
+            </>
 
         )
     }

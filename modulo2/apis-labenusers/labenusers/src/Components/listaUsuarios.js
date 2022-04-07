@@ -1,5 +1,92 @@
 import axios from 'axios';
 import React from 'react'
+import styled, {createGlobalStyle} from 'styled-components'
+import Lixeira from '../assets/lixeira.png'
+
+const FundoPagina = createGlobalStyle`
+body {
+    background-color: rgb(247, 244, 239);
+}
+
+button:hover {
+    background-color: rgba(254, 126, 2, 0.8);
+    cursor: pointer;
+}
+`
+
+const ContainerPagina = styled.div`
+background-color: rgb(229, 233, 235);
+border-radius: 8%;
+display: flex;
+margin: auto;
+flex-direction: column;
+align-items: center;
+width: 80%;
+height: 90%;
+padding: 30px;
+
+p {
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(69, 82, 91);
+    font-size: 16px;
+}
+`
+const TituloUsuarios = styled.h2`
+font-family: Arial, Helvetica, sans-serif;
+font-size: 40px;
+font-weight: 600;
+color: rgb(254, 126, 2);
+
+span{
+    color: rgb(69, 82, 91);
+}
+
+`
+const ContainerLista = styled.div`
+width: 70%;
+`
+const Lista = styled.ul`
+margin-top: 50px;
+`
+
+const ItemLista = styled.li`
+background-color: white;
+box-shadow: 12px 15px rgb(254, 126, 2);
+border: none;
+display: flex;
+align-items: center;
+justify-content: space-between;
+font-size: 20px;
+font-family: Arial, Helvetica, sans-serif;
+color: rgb(69, 82, 91);
+margin: 30px;
+padding: 10px;
+
+button:hover{
+    background-color: rgba(254, 126, 2, 0.8);
+    cursor: pointer;
+}
+`
+const IconeDeletar = styled.img`
+width: 25px;
+`
+
+const BotaoDeletar = styled.button`
+border-radius: 50%;
+border: none;
+background-color: rgb(254, 126, 2);
+padding: 8px;
+`
+
+const BotaoVoltar = styled.button`
+border: none;
+background-color: rgb(254, 126, 2);
+border-radius: 20%;
+color: white;
+font-size: 18px;
+margin: 20px 0 20px 20px;
+padding: 20px;
+`
 
 export default class ListaUsuarios extends React.Component{
     state = {
@@ -37,22 +124,27 @@ export default class ListaUsuarios extends React.Component{
 
     render() {
         const usuariosMapeados = this.state.usuarios.map((usuario) => {
-            return <li key={usuario.id}>
+            return <ItemLista key={usuario.id}>
                     {usuario.name} 
-                    <button onClick={() => this.deletaUsuario(usuario.id)}> X </button>
-                   </li>
+                    <BotaoDeletar onClick={() => this.deletaUsuario(usuario.id)}> <IconeDeletar src={Lixeira}/> </BotaoDeletar>
+                   </ItemLista>
         });
 
         return (
-            <div>
-                <h2> Usuários Cadastrados </h2>
-                <div>
-                    <ul>
-                        {usuariosMapeados}
-                    </ul>
-                </div>
-            <button onClick={this.props.voltarParaCadastro}> Voltar </button>
-            </div>
+            <>
+            <FundoPagina/>
+
+                <BotaoVoltar onClick={this.props.voltarParaCadastro}> Voltar </BotaoVoltar>
+                <ContainerPagina>
+                    <TituloUsuarios> Usuários Cadastrados<span>_</span> </TituloUsuarios>
+                    <ContainerLista>
+                        <Lista>
+                            {usuariosMapeados}
+                        </Lista>
+                    </ContainerLista>
+                    <footer><p>Desenvolvido por @EduardaPacheco </p> </footer> 
+                </ContainerPagina>
+            </>
         )
     }
 }
