@@ -4,15 +4,19 @@ import CapaPlaylist from '../assets/playlist-cover1.png'
 export default class CardPlaylists extends React.Component {
 
     render () {
+        const playlistsFiltradas = this.props.listaPlaylists.map((playlist) => {
+            return <div key={playlist.id}
+                    onClick={() => this.props.irParaDetalhes(playlist.id)}
+                  >
+                   <img src={CapaPlaylist}/>
+                   <p> {playlist.name} </p>
+            </div>
+        });
 
         return (
-            <div>
-                <figure>
-                    <img src={CapaPlaylist}/>
-                    <h2> Tìtulo genérico </h2> 
-                </figure>
-        
-            </div>
+          <>
+            {playlistsFiltradas}
+          </>
         )
     }
 }

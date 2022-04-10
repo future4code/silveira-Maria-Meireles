@@ -8,14 +8,16 @@ const FundoTelas = createGlobalStyle`
 * {
   background-color: black;
   margin: 0;
-  padding: 0
+  padding: 0;
+  color: white;
 }
 `
 
 export default class App extends React.Component {
 
   state = { 
-    telaAtual: 'home'
+    telaAtual: 'home',
+    playlistClicada: ''
   };
 
   trocaDeTela = () => {
@@ -23,9 +25,9 @@ export default class App extends React.Component {
       case 'home': 
         return <PaginaHome irParaPlaylists={this.irParaPlaylists}/>
       case 'playlists':
-        return <PaginaPlaylists/>
+        return <PaginaPlaylists irParaDetalhes={this.irParaDetalhes}/>
       case 'detalhe':
-        return <PaginaDetalhe/>
+        return <PaginaDetalhe voltarParaPlaylists={this.voltarParaPlaylists} playlistClicada={this.state.playlistClicada}/>
       default: 
         return alert("Ocorreu um erro. Página não encontrada.");
     };
@@ -35,13 +37,18 @@ export default class App extends React.Component {
     this.setState({telaAtual: 'playlists'});
   };
 
-  irParaDetalhes = () => {
-    this.setState({telaAtual: 'detalhe'});
-  };
-
   voltarParaHome = () => {
     this.setState({telaAtual: 'home'});
   };
+
+  irParaDetalhes = (id) => {
+    this.setState({telaAtual: 'detalhe', playlistClicada: {id} });
+  }; 
+  
+  voltarParaPlaylists = () => {
+    this.setState({telaAtual: 'playlists', playlistClicada: ''})
+  }
+
 
   render () {
   return (
