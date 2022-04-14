@@ -27,7 +27,16 @@ export default class PaginaPlaylists extends React.Component{
         return (
             <>
                 <div> 
-                    <CardPlaylists listaPlaylists={this.state.listaPlaylists} irParaDetalhes={this.props.irParaDetalhes} playlistClicada={this.props.playlistClicada}/>
+
+                    <button onClick={this.props.voltarParaHome}>
+                        Home
+                    </button>
+                    
+                    <CardPlaylists 
+                    listaPlaylists={this.state.listaPlaylists} 
+                    irParaDetalhes={this.props.irParaDetalhes} 
+                    playlistClicada={this.props.playlistClicada}
+                    />
                 </div>
             </>
         )

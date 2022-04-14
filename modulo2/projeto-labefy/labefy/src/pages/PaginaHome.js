@@ -1,56 +1,68 @@
 import React from "react";
-import axios from 'axios';
+import axios from "axios";
+import EstiloHome, { AdicionarPlaylist, BotaoAddPlaylist } from "./EstiloHome";
 import { URL_base } from "../constants/urls";
-import ChamadaUm from '../assets/chamada_novoUser.png'
-import ChamadaDois from '../assets/chamada_UserCadastrado.png' 
+import ChamadaUm from "../assets/chamada_novoUser.png";
+import ChamadaDois from "../assets/chamada_UserCadastrado.png";
 import HeaderPaginas from "../components/HeaderPaginas";
 
-export default class PaginaHome extends React.Component{
-    state = {
-        nomePlaylist: '',
-        playlists: 0
+export default class PaginaHome extends React.Component {
+  state = {
+    nomePlaylist: "",
+    playlists: 0,
+  };
+
+  aoDigitarPlaylist = (event) => {
+    this.setState({ nomePlaylist: event.target.value });
+    console.log(this.state.nomePlaylist);
+  };
+
+  criarPlaylist = () => {
+    const url = `${URL_base}/playlists`;
+    console.log(url);
+    const body = {
+      name: this.state.nomePlaylist,
     };
+    axios
+      .post(url, body, {
+        headers: {
+          Authorization: "maria-meireles-silveira",
+        },
+      })
+      .then((res) => {
+        console.log("Playlist criada com sucesso!");
+        this.setState({ nomePlaylist: "" });
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+  };
 
-    aoDigitarPlaylist = (event) => {
-        this.setState({nomePlaylist: event.target.value});
-        console.log(this.state.nomePlaylist);
-    };
+  render() {
+    return (
+      <>
+        <HeaderPaginas irParaPlaylists={this.props.irParaPlaylists} />
+        <main>
+          <img
+            src={this.state.playlists > 0 ? `${ChamadaDois}` : `${ChamadaUm}`}
+          />
 
-   criarPlaylist = () => {
-       const url = `${URL_base}/playlists`;
-       console.log(url)
-       const body = {
-           name: this.state.nomePlaylist
-       };
-       axios.post(url, body, {headers: {
+          <div>
+            <AdicionarPlaylist
+              type={"text"}
+              placeholder={"Nome da Playlist"}
+              onChange={this.aoDigitarPlaylist}
+              value={this.state.nomePlaylist}
+            ></AdicionarPlaylist>
 
-        Authorization: "maria-meireles-silveira"
-       }}).then((res) => {
-           console.log('Playlist criada com sucesso!')
-           this.setState({nomePlaylist: ''});
-       }).catch((err) => {
-           alert(err.message)
-       })
-   }
+            <BotaoAddPlaylist onClick={this.criarPlaylist}>Criar Playlist</BotaoAddPlaylist>
+          </div>
+        </main>
 
-
-    render () {
-
-        return (
-            <>
-               <HeaderPaginas irParaPlaylists={this.props.irParaPlaylists}/>      
-                <main> 
-                    <img src={this.state.playlists > 0 ? `${ChamadaDois}` : `${ChamadaUm}`} />
-                    <input type={'text'} placeholder={'Nome da Playlist'}
-                    onChange={this.aoDigitarPlaylist} value={this.state.nomePlaylist}>      
-                    </input>
-                    <button onClick={this.criarPlaylist}> Criar Playlist </button>
-                </main>
-
-                <footer>
-                    <span> Desenvolvido por @EduardaPacheco </span>
-                </footer>
-            </>
-        )
-    }
+        <footer>
+          <span> Desenvolvido por @EduardaPacheco </span>
+        </footer>
+      </>
+    );
+  }
 }

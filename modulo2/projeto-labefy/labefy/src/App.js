@@ -25,7 +25,7 @@ export default class App extends React.Component {
       case 'home': 
         return <PaginaHome irParaPlaylists={this.irParaPlaylists}/>
       case 'playlists':
-        return <PaginaPlaylists irParaDetalhes={this.irParaDetalhes}/>
+        return <PaginaPlaylists irParaDetalhes={this.irParaDetalhes} voltarParaHome={this.voltarParaHome}/>
       case 'detalhe':
         return <PaginaDetalhe voltarParaPlaylists={this.voltarParaPlaylists} playlistClicada={this.state.playlistClicada}/>
       default: 
