@@ -2,7 +2,7 @@ import React from "react";
 import PaginaHome from './pages/PaginaHome'
 import PaginaPlaylists from './pages/PaginaPlaylists'
 import PaginaDetalhe from './pages/PaginaDetalhe'
-import styled, { createGlobalStyle } from "styled-components";
+import styled, {createGlobalStyle } from "styled-components";
 
 const FundoTelas = createGlobalStyle`
 * {

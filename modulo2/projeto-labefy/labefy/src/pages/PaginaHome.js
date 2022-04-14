@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "axios";
-import { AdicionarPlaylist, BotaoAddPlaylist } from "./EstiloHome";
 import { URL_base } from "../constants/urls";
 import ChamadaUm from "../assets/chamada_novoUser.png";
 import ChamadaDois from "../assets/chamada_UserCadastrado.png";
@@ -49,14 +48,14 @@ export default class PaginaHome extends React.Component {
           />
 
           <div>
-            <AdicionarPlaylist
+            <input
               type={"text"}
               placeholder={"Nome da Playlist"}
               onChange={this.aoDigitarPlaylist}
               value={this.state.nomePlaylist}
-            ></AdicionarPlaylist>
+            ></input>
 
-            <BotaoAddPlaylist onClick={this.criarPlaylist}>Criar Playlist</BotaoAddPlaylist>
+            <button onClick={this.criarPlaylist}>Criar Playlist</button>
           </div>
         </main>
 

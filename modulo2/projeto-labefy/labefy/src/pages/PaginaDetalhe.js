@@ -40,12 +40,12 @@ export default class PaginaDetalhe extends React.Component {
             };
         };
 
-        const musicasMapeadas = this.state.musicas.map((musica) => {
-           return <li key={musica.id}>
-                <p> {musica.name} </p>
-                <p> {musica.artist} </p>
-            </li>
-        })
+        // const musicasMapeadas = this.state.musicas.map((musica) => {
+        //    return <li key={musica.id}>
+        //         <p> {musica.name} </p>
+        //         <p> {musica.artist} </p>
+        //     </li>
+        // })
 
         return (
             <>
@@ -63,7 +63,7 @@ export default class PaginaDetalhe extends React.Component {
 
                     <div>
                         <ul>
-                        {musicasMapeadas}
+                        {/*{musicasMapeadas}*/}
                         </ul>
                     </div>
                 </div>
