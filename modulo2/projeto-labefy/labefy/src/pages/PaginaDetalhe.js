@@ -41,7 +41,7 @@ export default class PaginaDetalhe extends React.Component {
         };
 
         const musicasMapeadas = this.state.musicas.map((musica) => {
-            <li key={musica.id}>
+           return <li key={musica.id}>
                 <p> {musica.name} </p>
                 <p> {musica.artist} </p>
             </li>
@@ -55,7 +55,7 @@ export default class PaginaDetalhe extends React.Component {
 
                 <div> 
                     <h3> {this.props.playlistClicada.name} </h3>
-                    <img src={CapaPlaylist}/> 
+                    <img src={CapaPlaylist} alt={"Capa playlist"}/> 
                     <button onClick={this.aoClicarEmAdicionar}> Adicionar faixas à playlist </button> 
                     <div> 
                         {mostraCardAddMusica()}

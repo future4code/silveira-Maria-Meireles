@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import EstiloHome, { AdicionarPlaylist, BotaoAddPlaylist } from "./EstiloHome";
+import { AdicionarPlaylist, BotaoAddPlaylist } from "./EstiloHome";
 import { URL_base } from "../constants/urls";
 import ChamadaUm from "../assets/chamada_novoUser.png";
 import ChamadaDois from "../assets/chamada_UserCadastrado.png";
@@ -45,6 +45,7 @@ export default class PaginaHome extends React.Component {
         <main>
           <img
             src={this.state.playlists > 0 ? `${ChamadaDois}` : `${ChamadaUm}`}
+            alt={"Chamada página home"}
           />
 
           <div>

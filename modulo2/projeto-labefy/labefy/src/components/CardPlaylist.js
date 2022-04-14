@@ -8,7 +8,7 @@ export default class CardPlaylists extends React.Component {
             return <div key={playlist.id}
                     onClick={() => this.props.irParaDetalhes(playlist.id)}
                   >
-                   <img src={CapaPlaylist}/>
+                   <img src={CapaPlaylist} alt={"Capa da playlist"}/>
                    <p> {playlist.name} </p>
             </div>
         });
