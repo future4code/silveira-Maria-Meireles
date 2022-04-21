@@ -1,7 +1,14 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios';
-import { BASE_url, aluna } from '../../contants/urls';
+import logo from '../../assets/logo.png'
+import chat from '../../assets/chat.png'
+import Xa from '../../assets/x.png'
+import coracao from '../../assets/coracao.png'
+import { BASE_url} from '../../contants/urls';
 import { ContainerSite } from '../../contants/GlobalTemplate';
+import { FotoPerfil, ContainerPerfil, ContainerHeader, Logo, Chat, BotaoUm, Botaodois, ContainerBotoes} from './style';
+import BotaoLimpar from '../../Components/BotaoLimpar';
+
 
 const PaginaPerfis = (props) => {
     const [perfilParaEscolher, setPerfilParaEscolher] = useState('');
@@ -38,27 +45,32 @@ const PaginaPerfis = (props) => {
 
     return (
         <>
+        
             <ContainerSite>
-                <header>
-                    <img src={''} alt={'Logo site'}/>
-                    <img  onClick={props.vaiParaMatches} src={''} alt={'Icone chat'}/>
-                </header>
+                <ContainerHeader>
+                        <Logo src={logo} alt={'Logo site'}/>
+                        <Chat onClick={props.vaiParaMatches} src={chat} alt={'Icone chat'}/>
+                </ContainerHeader>
 
                 <main>
-                    <img 
-                    src={perfilParaEscolher.photo} 
-                    alt={'Foto de perfil do usuário'}
-                    />
+                    <ContainerPerfil>
+                        <FotoPerfil
+                        src={perfilParaEscolher.photo} 
+                        alt={'Foto de perfil do usuário'}
+                        />
 
-                    <h2> {perfilParaEscolher.name} </h2>
-                    <span> {perfilParaEscolher.age} </span>
-                    <span> {perfilParaEscolher.bio} </span>
+                        <h2> {perfilParaEscolher.name}, {perfilParaEscolher.age} </h2>
+                        <span> {perfilParaEscolher.bio} </span>
+                    </ContainerPerfil>
                 </main>
 
-                <footer>
-                    <button onClick={pegaPerfilParaMostrar}> Num tô à fim </button>
-                    <button onClick={curtirPerfil}> Ui, quero! </button>
-                </footer>
+                <section>
+                    <ContainerBotoes>
+                        <BotaoUm ClassName="BotaoX" onClick={pegaPerfilParaMostrar}> <img src={Xa} /> </BotaoUm>
+                        <Botaodois ClassName="BotaoH" onClick={curtirPerfil}> <img src={coracao}/> </Botaodois>
+                    </ContainerBotoes>
+                </section>
+                  
             </ContainerSite>
         </>
     )

@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import PaginaPerfis from './Pages/PaginaPerfis/PaginaPerfis'
 import PaginaMatches from './Pages/PaginaMatches/PaginaMatches'
-import BotaoLimpar from './Components/BotaoLimpar';
 import { EstiloGlobal } from './contants/GlobalTemplate';
 
 
@@ -32,7 +31,6 @@ function App() {
     <div>
       <EstiloGlobal/>
       {trocaDeTela()}
-      <BotaoLimpar/>
     </div>
   );
 }
