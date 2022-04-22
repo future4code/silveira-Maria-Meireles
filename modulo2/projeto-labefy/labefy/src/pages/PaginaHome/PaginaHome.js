@@ -1,9 +1,10 @@
 import React from "react";
 import axios from "axios";
-import { URL_base } from "../constants/urls";
-import ChamadaUm from "../assets/chamada_novoUser.png";
-import ChamadaDois from "../assets/chamada_UserCadastrado.png";
-import HeaderPaginas from "../components/HeaderPaginas";
+import {ContainerPrincipal, ContainerBotoes, RodapePagina } from "./style";
+import { URL_base } from "../../constants/urls";
+import ChamadaUm from "../../assets/chamada_novoUser.png";
+import ChamadaDois from "../../assets/chamada_UserCadastrado.png";
+import HeaderPaginas from "../../components/HeaderPaginas/HeaderPaginas";
 
 export default class PaginaHome extends React.Component {
   state = {
@@ -39,15 +40,15 @@ export default class PaginaHome extends React.Component {
 
   render() {
     return (
-      <>
-        <HeaderPaginas irParaPlaylists={this.props.irParaPlaylists} />
-        <main>
+      <div>
+        <HeaderPaginas irParaPlaylists={this.props.irParaPlaylists}/>
+        <ContainerPrincipal>
           <img
             src={this.state.playlists > 0 ? `${ChamadaDois}` : `${ChamadaUm}`}
             alt={"Chamada página home"}
           />
 
-          <div>
+          <ContainerBotoes>
             <input
               type={"text"}
               placeholder={"Nome da Playlist"}
@@ -56,13 +57,13 @@ export default class PaginaHome extends React.Component {
             ></input>
 
             <button onClick={this.criarPlaylist}>Criar Playlist</button>
-          </div>
-        </main>
+          </ContainerBotoes>
+        </ContainerPrincipal>
 
-        <footer>
+        <RodapePagina>
           <span> Desenvolvido por @EduardaPacheco </span>
-        </footer>
-      </>
+        </RodapePagina>
+      </div>
     );
   }
 }

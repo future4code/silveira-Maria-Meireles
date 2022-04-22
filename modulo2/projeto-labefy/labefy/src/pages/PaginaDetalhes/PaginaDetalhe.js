@@ -1,8 +1,8 @@
 import axios from "axios";
 import React from "react";
-import CapaPlaylist from '../assets/playlist-cover1.png'
-import CardAdicionarMus from "../components/CardAdicionarMus";
-import { URL_base } from "../constants/urls";
+import CapaPlaylist from '../../assets/playlist-cover1.png'
+import CardAdicionarMus from '../../components/CardAddMusica/CardAdicionarMus'
+import { URL_base } from '../../constants/urls';
 
 export default class PaginaDetalhe extends React.Component {
     state = {
@@ -39,13 +39,6 @@ export default class PaginaDetalhe extends React.Component {
                return <CardAdicionarMus playlistId={this.props.playlistClicada.id}/>
             };
         };
-
-        // const musicasMapeadas = this.state.musicas.map((musica) => {
-        //    return <li key={musica.id}>
-        //         <p> {musica.name} </p>
-        //         <p> {musica.artist} </p>
-        //     </li>
-        // })
 
         return (
             <>
