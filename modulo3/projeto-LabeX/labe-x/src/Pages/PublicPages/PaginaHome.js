@@ -1,5 +1,5 @@
 import React from 'react';
-import { vaiParaViagens } from '../../routes/coordinator';
+import { vaiParaLogin, vaiParaViagens } from '../../routes/coordinator';
 import { useNavigate } from 'react-router-dom';
 
 const PaginaHome = () => {
@@ -11,7 +11,7 @@ const PaginaHome = () => {
             <img src={""} alt={""}/>
 
             <div>
-                <button> Login </button>
+                <button onClick = {() => vaiParaLogin(navigate)}> Login </button>
                 <button onClick={() => vaiParaViagens(navigate)}> Ver Viagens </button>
             </div>
         </div>

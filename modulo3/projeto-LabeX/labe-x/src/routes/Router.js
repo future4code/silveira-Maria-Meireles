@@ -6,7 +6,7 @@ import PaginaViagens from "../Pages/PublicPages/PaginaViagens";
 import CadastroViagens from "../Pages/RestrictPages/CadastroViagens";
 import DescricaoViagens from "../Pages/RestrictPages/DescricaoViagens";
 import PaginaAdmin from "../Pages/RestrictPages/PaginaAdmin";
-import PaginaLogin from "../Pages/RestrictPages/PaginaLogin";
+import PaginaLogin from "../Pages/PublicPages/PaginaLogin";
 
 const Router = () => {
   return (

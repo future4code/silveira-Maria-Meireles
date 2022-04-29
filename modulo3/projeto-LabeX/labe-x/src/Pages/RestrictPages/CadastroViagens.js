@@ -3,7 +3,24 @@ import React from 'react';
 const CadastroViagens = () => {
 
     return (
-        <p> 500 dolá pra í na lua </p>
+        <div> 
+            <h1> Cadastre-se para uma viagem! </h1>
+
+            <div>
+                <input
+                type='text'
+                placeholder='Nome'
+                value={''}
+                />
+
+                <input 
+                type='number'
+                placeholder='Idade'
+                value={''}
+                />
+                
+            </div>
+        </div>
     )
 };
 
