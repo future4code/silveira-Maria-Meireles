@@ -1,9 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { BASE_url } from '../../constants/urls';
+import { voltarParaAnterior } from '../../routes/coordinator';
 
 const DescricaoViagens = () => {
+    const navigate = useNavigate();
     const params = useParams();
     const id = params.id;
     const [detalheViagem, setDetalheViagem] = useState({})
@@ -56,7 +59,7 @@ const DescricaoViagens = () => {
                 )
             })}
         </div>
-
+            <button onClick={() => voltarParaAnterior(navigate)}> Voltar </button>
       </div>
     );
 };

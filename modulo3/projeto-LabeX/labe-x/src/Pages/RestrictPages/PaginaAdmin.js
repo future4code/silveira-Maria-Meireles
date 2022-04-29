@@ -1,29 +1,13 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BASE_url } from '../../constants/urls';
+import useResgataViagens from '../../Hooks/useResgataViagens';
 import { vaiParaDetalhesAdmin } from '../../routes/coordinator';
+import { voltarParaAnterior } from '../../routes/coordinator';
 
 const PaginaAdmin = () => {
-
-    const [listaViagens, setListaViagens] = useState([]);
     const navigate = useNavigate();
-
-    const resgataListaDeviagens = () => {
-        const url = `${BASE_url}/trips`
-        axios.get(url)
-        .then((res) => {
-            console.log(res.data.trips);
-            setListaViagens(res.data.trips);
-        })
-        .catch((err) => {
-            console.log(err.response);
-        });
-    };
-
-    useEffect(() => {
-        resgataListaDeviagens();
-    }, []);
+    const listaViagens = useResgataViagens();
 
     return (
         <div>
@@ -42,6 +26,7 @@ const PaginaAdmin = () => {
                     )
                 })}
             </div>
+            <button onClick={() => voltarParaAnterior(navigate)}> Voltar </button>
         </div>
     )
 };
