@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import useResgataViagens from '../../Hooks/useResgataViagens';
-import { voltarParaAnterior } from '../../routes/coordinator';
-import { selectPaises } from '../../lists/paises';
+import useResgataViagens from '../../../Hooks/useResgataViagens'
+import { voltarParaAnterior } from '../../../routes/coordinator';
+import { selectPaises } from '../../../lists/paises';
 const CadastroCliente = () => {
     
     const navigate = useNavigate();
@@ -22,7 +22,7 @@ const CadastroCliente = () => {
                     <option> Selecionar </option>
                     {listaViagens.map((viagem) => {
                         return (
-                            <option hey={viagem.id}> {viagem.name} </option>
+                            <option value={viagem.id}> {viagem.name} </option>
                         )
                     })}; 
                 </select>

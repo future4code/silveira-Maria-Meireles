@@ -1,6 +1,6 @@
 import React from 'react';
-import { voltarParaAnterior } from '../../routes/coordinator';
-import { listaPlanetas } from '../../lists/planetas';
+import { voltarParaAnterior } from '../../../routes/coordinator';
+import { listaPlanetas } from '../../../lists/planetas';
 import { useNavigate } from 'react-router-dom';
 
 const CadastroViagens = () => {

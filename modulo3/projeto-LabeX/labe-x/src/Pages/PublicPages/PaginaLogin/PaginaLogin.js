@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
-import { BASE_url } from "../../constants/urls";
-import { vaiParaAdmin } from "../../routes/coordinator";
+import { BASE_url } from '../../../constants/urls';
+import { vaiParaAdmin } from "../../../routes/coordinator";
 import { useNavigate } from "react-router-dom";
 
 const PaginaLogin = () => {
@@ -20,7 +20,6 @@ const PaginaLogin = () => {
   };
 
   const enviaDadosLogin = () => {
-    console.log(email, senha);
     const url = `${BASE_url}/login`
     const body = {
       email: email,

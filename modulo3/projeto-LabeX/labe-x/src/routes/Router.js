@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import CadastroCliente from "../Pages/PublicPages/CadastroCliente";
-import PaginaHome from "../Pages/PublicPages/PaginaHome";
-import PaginaViagens from "../Pages/PublicPages/PaginaViagens";
-import CadastroViagens from "../Pages/RestrictPages/CadastroViagens";
-import DescricaoViagens from "../Pages/RestrictPages/DescricaoViagens";
-import PaginaAdmin from "../Pages/RestrictPages/PaginaAdmin";
-import PaginaLogin from "../Pages/PublicPages/PaginaLogin";
+import CadastroCliente from '../Pages/PublicPages/CadastroCliente/CadastroCliente';
+import PaginaHome from '../Pages/PublicPages/paginaHome/PaginaHome';
+import PaginaViagens from "../Pages/PublicPages/paginaViagens/PaginaViagens";
+import CadastroViagens from "../Pages/RestrictPages/cadastroViagens/CadastroViagens";
+import DescricaoViagens from "../Pages/RestrictPages/descricaoViagens/DescricaoViagens";
+import PaginaAdmin from "../Pages/RestrictPages/paginaAdmin/PaginaAdmin";
+import PaginaLogin from "../Pages/PublicPages/PaginaLogin/PaginaLogin";
 
 const Router = () => {
   return (
