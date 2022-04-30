@@ -1,14 +1,13 @@
-export const selectPaises = () => {
+export const selectPaises = (form, digitandoInputs) => {
   return (
     <select
     name={'country'}
-    value={''}
-    onChange={''}
+    value={form.country}
+    onChange={digitandoInputs}
     required
     >
-      <option value="Brasil" selected="selected">
-        Brasil
-      </option>
+      <option selected> selecionar </option>
+      <option value="Brasil"> Brasil</option>
       <option value="Afeganistão">Afeganistão</option>
       <option value="África do Sul">África do Sul</option>
       <option value="Albânia">Albânia</option>

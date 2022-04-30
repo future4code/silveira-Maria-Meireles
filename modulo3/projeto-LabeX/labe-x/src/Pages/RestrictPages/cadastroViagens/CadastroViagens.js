@@ -2,56 +2,92 @@ import React from 'react';
 import { voltarParaAnterior } from '../../../routes/coordinator';
 import { listaPlanetas } from '../../../lists/planetas';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { BASE_url } from '../../../constants/urls';
+import axios from 'axios';
 
 const CadastroViagens = () => {
     const navigate = useNavigate();
+    const [form, setForm] = useState(
+      {
+        name: '',
+        planet: '',
+        date: '',
+        description: '',
+        durationInDays: ''
+      }
+    )
 
+    const digitandoInputs = (event) => {
+      const {name, value} = event.target
+      setForm({...form, [name]: value})
+    }
+
+    const cadastraNovaViagem = (event) => {
+      event.preventDefault();
+
+      const url = `${BASE_url}/trips`;
+      const token = localStorage.getItem('token');
+        axios.post(url, form, {headers: {
+          auth: token
+        }})
+        .then((res) => {
+          console.log("deu certo:", res.data)
+          voltarParaAnterior(navigate);
+        })
+        .catch((err) => {
+          alert(err.message)
+        })
+    }
     return (
       <div>
         <h1> Cadastre sua viagem </h1>
-
         <div>
-          <form>
+          <form onSubmit={cadastraNovaViagem}>
             <input
               type="text"
               placeholder="Nome"
-              name={""}
-              value={""}
-              onChange={""}
+              name={"name"}
+              value={form.name}
+              onChange={digitandoInputs}
+              pattern='^.{5,}'
+              title="O nome da sua viagem deve ter ao menos 5 letras."
               required
+            />
+
+            {listaPlanetas(form, digitandoInputs)}
+
+            <input
+            type='date'
+            name={"date"} 
+            value={form.date} 
+            onChange={digitandoInputs} 
+            min={'2023/01/01'}
+            title=''
+            required
             />
 
             <input
-              type="text"
-              placeholder="Idade"
-              name={""}
-              value={""}
-              onChange={""}
-              required
-            />
-
-            {listaPlanetas()}
-
-            <input type="date" name={""} value={""} onChange={""} required />
-
-            <textarea
               placeholder="Descrição"
-              name={""}
-              value={""}
-              onchange={""}
+              name={"description"}
+              value={form.description}
+              onChange={digitandoInputs}
+              pattern='^.{30,}'
+              title="A Descrição deve ter no mínimo 30 caracteres."
               required
             />
 
             <input
               type="number"
               placeholder="Duração em dias"
-              name={""}
-              value={""}
-              onChange={""}
+              name={"durationInDays"}
+              value={form.durationInDays}
+              onChange={digitandoInputs}
+              min={'50'}
               required
             />
 
-            <button> Criar </button>
+            <button > Criar </button>
           </form>
           <button onClick={() => voltarParaAnterior(navigate)}> Voltar </button>
         </div>

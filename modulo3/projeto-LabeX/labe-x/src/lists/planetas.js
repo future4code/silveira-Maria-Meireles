@@ -1,6 +1,10 @@
-export const listaPlanetas = () => {
+export const listaPlanetas = (form, digitandoInputs) => {
     return (
-        <select>
+        <select
+        name={'planet'}
+        value={form.planet}
+        onChange={digitandoInputs}
+        >
             <option> Selecionar planeta </option>
             <option value={'Mercúrio'}> Mercúrio </option>
             <option value={'Vênus'}> Vênus </option>

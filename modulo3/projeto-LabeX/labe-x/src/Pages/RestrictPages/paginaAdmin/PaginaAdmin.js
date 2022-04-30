@@ -1,6 +1,7 @@
 import axios from 'axios';
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, {useEffect} from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { BASE_url } from '../../../constants/urls';
 import useResgataViagens from '../../../Hooks/useResgataViagens';
 import { vaiParaDetalhesAdmin } from '../../../routes/coordinator';
 import { voltarParaAnterior } from '../../../routes/coordinator';
@@ -8,6 +9,7 @@ import { voltarParaAnterior } from '../../../routes/coordinator';
 const PaginaAdmin = () => {
     const navigate = useNavigate();
     const listaViagens = useResgataViagens();
+    const params = useParams();
 
     return (
         <div>
@@ -15,7 +17,7 @@ const PaginaAdmin = () => {
             <div>
                 {listaViagens.map((viagem) => {
                     return(
-                        <div>
+                        <div key={viagem.id}>
                             <h2> {viagem.name} </h2>
                             <p> {viagem.description} </p>
                             <p> Data de partida: {viagem.date} </p>
@@ -31,5 +33,4 @@ const PaginaAdmin = () => {
     )
 };
 
-export default PaginaAdmin;
-
+export default PaginaAdmin ;
