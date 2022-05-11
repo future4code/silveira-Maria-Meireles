@@ -1,9 +1,12 @@
 import React from 'react'
+import PostBox from '../Components/Post/PostBox';
 
 const FeedPage = () => {
 
     return (
-        <div> Página do feed </div>
+        <>
+            <PostBox/>
+        </>
     )
 }
 

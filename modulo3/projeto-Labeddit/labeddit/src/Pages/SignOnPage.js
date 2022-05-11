@@ -1,32 +1,18 @@
 import React from 'react'
+import LoginForm from '../Components/Login/LoginForm';
+import Logo from '../assets/Logotipo.png'
+import { useNavigate } from 'react-router-dom';
+import { goToRegister } from '../routes/coordinator';
 
 const SignOnPage = () => {
+    const navigate = useNavigate();
 
     return (
         <div>
-            <img src={''} alt={"Aqui vai vir o logo"}/>
-
-            <form onSubmit={''}>
-                <input
-                type='email'
-                placeholder='E-mail'
-                name={''}
-                value={''}
-                onChange={''}
-                />
-
-                <input
-                type='password'
-                placeholder='Senha'
-                name={''}
-                value={''}
-                onChange={''}
-                />
-            </form>
-
-            <button> Entrar </button>
+            <img src={Logo} alt={"Aqui vai vir o logo"}/>
+            <LoginForm/>
             <hr/>
-            <button> Crie uma conta! </button>
+            <button onClick={() => goToRegister(navigate)}> Crie uma conta! </button>
         </div>
     )
 }

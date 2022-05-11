@@ -3,7 +3,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import SignOnPage from '../Pages/SignOnPage'
 import SignInPage from '../Pages/SignInPage'
 import FeedPage from '../Pages/FeedPage'
-import PostDetailsPage from '../Pages/PostDetailsPage'
+import PostCommentsPage from '../Pages/PostCommentsPage'
 
 const Router = () => {
     return (
@@ -12,7 +12,7 @@ const Router = () => {
                 <Route index element={<SignOnPage/>} />
                 <Route path='/Cadastro' element={<SignInPage/>} />
                 <Route path='/Feed' element={<FeedPage/>} />
-                <Route path='/DetalhesPost' element={<PostDetailsPage/>} />
+                <Route path='/ComentariosPost/:id' element={<PostCommentsPage/>} />
             </Routes>
         </BrowserRouter>
     )

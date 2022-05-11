@@ -7,8 +7,8 @@ export const goToFeed = (navigate) => {
     navigate('/Feed')
 };
 
-export const goToPostDetais = (navigate) => {
-    navigate('/DetalhesPost')
+export const goToPostComments = (navigate, id) => {
+    navigate(`/ComentariosPost/${id}`)
 };
 
 export const goToRegister = (navigate) => {
