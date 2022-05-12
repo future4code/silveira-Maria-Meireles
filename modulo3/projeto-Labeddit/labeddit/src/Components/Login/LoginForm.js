@@ -2,20 +2,22 @@ import React from 'react'
 import useForm from '../../Hooks/useForm';
 import { login } from '../../services/usersRequests';
 import { useNavigate } from 'react-router-dom';
+import { FormContainer, Form, FormInputs, FormButtons } from './styled';
 
 const LoginForm = () => {
-    const [form, onChangeInputs] = useForm({email: "", password: ""});
+    const [form, onChangeInputs, clearForm] = useForm({email: "", password: ""});
     const navigate = useNavigate();
 
     const onSubmitLogin = (event) => {
         event.preventDefault();
         login(form, navigate);
+        clearForm();
     };
 
     return (
-        <div>
-            <form onSubmit={onSubmitLogin}>
-                <input
+        <FormContainer>
+            <Form onSubmit={onSubmitLogin}>
+                <FormInputs
                 type='email'
                 placeholder='E-mail'
                 name={"email"}
@@ -24,7 +26,7 @@ const LoginForm = () => {
                 required
                 />
 
-                <input
+                <FormInputs
                 type='password'
                 placeholder='Senha'
                 name={"password"}
@@ -33,13 +35,13 @@ const LoginForm = () => {
                 required
                 />
 
-                <button
+                <FormButtons
                 type='submit'
                 > 
                 Entrar 
-                </button>
-            </form>
-        </div>
+                </FormButtons>
+            </Form>
+        </FormContainer>
     )
 }
 

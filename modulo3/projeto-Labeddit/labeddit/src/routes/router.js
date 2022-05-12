@@ -4,6 +4,7 @@ import SignOnPage from '../Pages/SignOnPage'
 import SignInPage from '../Pages/SignInPage'
 import FeedPage from '../Pages/FeedPage'
 import PostCommentsPage from '../Pages/PostCommentsPage'
+import ErrorPage from '../Pages/ErrorPage'
 
 const Router = () => {
     return (
@@ -13,6 +14,7 @@ const Router = () => {
                 <Route path='/Cadastro' element={<SignInPage/>} />
                 <Route path='/Feed' element={<FeedPage/>} />
                 <Route path='/ComentariosPost/:id' element={<PostCommentsPage/>} />
+                <Route path='*' element={<ErrorPage/> } /> 
             </Routes>
         </BrowserRouter>
     )

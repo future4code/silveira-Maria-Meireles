@@ -4,12 +4,13 @@ import useForm from '../../Hooks/useForm';
 import { register } from '../../services/usersRequests';
 
 const RegisterForm = () => {
-    const [form, onChangeInputs] = useForm({username: "", email: "", password: ""});
+    const [form, onChangeInputs, clearForm] = useForm({username: "", email: "", password: ""});
     const navigate = useNavigate();
 
     const onSubmitRegister = (event) => {
         event.preventDefault();
         register(form, navigate);
+        clearForm()
     };
 
     return (

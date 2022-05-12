@@ -9,8 +9,12 @@ const useForm = (initialState) => {
         setForm({...form, [name]: value});
     }
 
+    const clearForm = () => {
+        setForm(initialState)
+    }
+
     return (
-        [form, onChangeInputs]
+        [form, onChangeInputs, clearForm]
     );
 };
 
