@@ -4,7 +4,7 @@ import { BASE_URL } from '../../constants/urls'
 import { goToPostComments } from '../../routes/coordinator'
 import { useNavigate } from 'react-router-dom'
 import { PostContainer } from './style'
-import { createPositiveVote } from '../../services/postsRequests'
+import FeedButtons from '../FeedButtons/FeedButtons'
 
 const PostBox = () => {
     const posts = useRequestData([], `${BASE_URL}/posts`)
@@ -13,6 +13,7 @@ const PostBox = () => {
     const onClickPost = (id) => {
       goToPostComments(navigate, id)
     }
+     console.log(posts)
 
     const formatedPosts = posts && posts.map((post) => {
           return (
@@ -24,9 +25,8 @@ const PostBox = () => {
               <p> {post.body} </p>
               
               <div>
-                <button> curtir </button>
-                <button> descurtir </button>
-                <button  onClick={() => onClickPost(post.id)}> Comentarios </button>
+                <FeedButtons id={post.id} votesQuantity={post.voteSum}/>
+                <button  onClick={() => onClickPost(post.id)}> {post.commentCount > 0 ? post.commentCount : 0} </button>
               </div>
             </PostContainer>
           );
