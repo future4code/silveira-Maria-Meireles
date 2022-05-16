@@ -6,30 +6,14 @@ import useRequestData from '../Hooks/useRequestData';
 import CommentBox from '../Components/CommentBox/CommentBox';
 import useProttectedPage from '../Hooks/useProttectedPage';
 import { supComment, downComment, deleteCommentVote } from '../services/commentsRequests';
+import { onClickUp, onClickDown } from '../services/votesRequests';
 
 const PostCommentsPage = () => {
     useProttectedPage();
     const params = useParams()
     const comments = useRequestData([], `${BASE_URL}/posts/${params.id}/comments`)
     const [commentVote, setCommentVote] = useState(false)
-
-    const onClickUp = (id) => {
-        if(commentVote === false) {
-            supComment(id, setCommentVote)
-        } 
-        else if (commentVote === true) {
-           deleteCommentVote(id, setCommentVote)
-        }
-    };
-
-    const onClickDown = (id) => {
-        if(commentVote === false) {
-            downComment(id, setCommentVote)
-        } 
-        else if (commentVote === true) {
-            deleteCommentVote(id, setCommentVote)
-        }
-    }
+    
 
     const formatedComments = comments && comments.map((comment) => {
         return (
@@ -39,8 +23,25 @@ const PostCommentsPage = () => {
                     <p> {comment.body} </p>
                 </div>
                 <div>
-                    <button onClick={() => onClickUp(comment.id)}> {comment.voteSum} </button>
-                    <button onClick={() => onClickDown(comment.id)}> X </button> 
+                    <button 
+                    onClick={() => onClickUp(commentVote,
+                    setCommentVote, 
+                    supComment(comment.id, setCommentVote), 
+                    comment.id, 
+                    deleteCommentVote(comment.id, setCommentVote))}
+                    > 
+                    {comment.voteSum} 
+                    </button>
+
+                    <button 
+                    onClick={() => onClickDown(commentVote, 
+                    setCommentVote, 
+                    downComment(comment.id, setCommentVote), 
+                    comment.id, 
+                    deleteCommentVote(comment.id, setCommentVote))}
+                    >
+                     X 
+                    </button> 
                 </div>
             </div>
         )

@@ -12,6 +12,7 @@ const LoginContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: auto;
     width: 85%;
     height: 100vh;
 
@@ -32,6 +33,11 @@ flex-direction: column;
 max-width: 100%;
 `
 
+const SeparationLine = styled.div`
+ margin-top: 10px;
+ border: 1px solid #FA7D2B;
+`
+
 const SignOnPage = () => {
     useUnprottectedPage()
     const navigate = useNavigate();
@@ -41,7 +47,7 @@ const SignOnPage = () => {
             <RobotLogo src={Logo} alt={"logo robô"}/>
             <ContainerInputs>
             <LoginForm/>
-                <p></p>
+                <SeparationLine/>
                 <FormButtons onClick={() => goToRegister(navigate)}> Crie uma conta! </FormButtons>
             </ContainerInputs>
         </LoginContainer>

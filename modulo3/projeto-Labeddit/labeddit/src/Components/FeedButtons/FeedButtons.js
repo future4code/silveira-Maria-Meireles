@@ -1,32 +1,42 @@
 import React, { useState } from 'react'
 import { subVote, downVote, deleteVote } from '../../services/postsRequests';
+import { onClickUp, onClickDown } from '../../services/votesRequests';
+import redArrow from '../../assets/redArrow.png'
+import greenArrow from '../../assets/greenArrow.png'
+import upArrow from '../../assets/upArrow.png'
+import downArrow from '../../assets/downArrow.png'
+import { ContainerLikeButtons, LikeButtons } from './style';
+
 
 
 const FeedButtons = (props) => {
-    const [voteState, setVote] = useState(false);
-
-    const onClickUp = (id) => {
-        if(voteState === false) {
-            subVote(id, setVote)
-        } 
-        else if (voteState === true) {
-           deleteVote(id, setVote)
-        }
-    };
-
-    const onClickDown = (id) => {
-        if(voteState === false) {
-            downVote(id, setVote)
-        } 
-        else if (voteState === true) {
-            deleteVote(id, setVote)
-        }
-    }
+    const [voteUpState, setVoteUp] = useState(false);
+    const [voteDownState, setVoteDown] = useState(false);
+   
     return (
-        <>
-            <button onClick={() => onClickUp(props.id)}> {props.votesQuantity} </button> 
-            <button onClick={() => onClickDown(props.id)}> X </button>
-        </>
+        <ContainerLikeButtons>
+            <LikeButtons 
+            onClick={() => onClickUp(voteUpState, 
+            setVoteUp, 
+            subVote(props.id, setVoteUp), 
+            props.id, 
+            deleteVote(props.id, setVoteUp))}
+            > 
+            <img src={voteUpState === true ? greenArrow : upArrow}/>
+            </LikeButtons> 
+
+            <p> {props.votesQuantity} </p>
+
+            <LikeButtons 
+            onClick={() => onClickDown(voteDownState,
+            setVoteDown,
+            downVote(props.id, setVoteDown),
+            props.id,
+            deleteVote(props.id, setVoteDown))}
+            > 
+            <img src={voteDownState === true ? redArrow : downArrow} />
+            </LikeButtons>
+        </ContainerLikeButtons>
     )
 };
 

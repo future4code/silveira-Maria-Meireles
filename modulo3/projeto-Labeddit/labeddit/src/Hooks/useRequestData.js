@@ -4,16 +4,15 @@ import { token } from '../constants/tokens';
 
 const useRequestData = (initialData, url) => {
     const [data, setData] = useState(initialData);
-    const acessToken = token;
 
     useEffect(() => {
         axios.get(url, {headers: {
-            Authorization: acessToken
+            Authorization: token
         }})
         .then((res) => {
             setData(res.data);
         }).catch((err) => {
-            alert("Occoreu um erro. Por favor, tente novamente.")
+            alert(err.message)
         });
         }, [url]);
 

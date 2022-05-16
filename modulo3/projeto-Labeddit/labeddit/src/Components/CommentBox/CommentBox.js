@@ -1,6 +1,5 @@
-import axios from "axios";
-import { token } from "../../constants/tokens";
-import { BASE_URL } from "../../constants/urls";
+import React from 'react'
+import { sendNewComment } from '../../services/commentsRequests';
 import useForm from "../../Hooks/useForm";
 
 
@@ -10,27 +9,9 @@ const CommentBox = (postId) => {
 
     const onSubmitComment = (event) => {
       event.preventDefault();
-      sendNewComment();
+      sendNewComment(postID, form);
       clearForm()
     }
-
-      const sendNewComment = () => {
-        const url = `${BASE_URL}/posts/${postID}/comments`;
-        const acessToken = token;
-
-        axios
-          .post(url, form, {
-            headers: {
-              Authorization: acessToken,
-            },
-          })
-          .then((res) => {
-            alert("Comentário criado!");
-          })
-          .catch((err) => {
-            alert("Algo deu errao. Por favor, tente novamente.");
-          });
-      };
 
     return (
         <div>

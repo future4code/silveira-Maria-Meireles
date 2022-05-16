@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import useForm from '../../Hooks/useForm';
 import { login } from '../../services/usersRequests';
 import { useNavigate } from 'react-router-dom';
-import { FormContainer, Form, FormInputs, FormButtons } from './styled';
+import { FormContainer, Form, FormInputs, FormButtons} from './styled';
 
 const LoginForm = () => {
     const [form, onChangeInputs, clearForm] = useForm({email: "", password: ""});
@@ -13,6 +13,8 @@ const LoginForm = () => {
         login(form, navigate);
         clearForm();
     };
+
+
 
     return (
         <FormContainer>

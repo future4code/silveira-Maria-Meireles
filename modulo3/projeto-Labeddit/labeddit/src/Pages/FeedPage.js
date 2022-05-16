@@ -8,6 +8,7 @@ import styled from 'styled-components'
 const FeedContainer = styled.div`
 width: 100vw;
 `
+
 const FeedPage = () => {
     useProttectedPage()
 

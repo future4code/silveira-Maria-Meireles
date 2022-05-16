@@ -50,7 +50,7 @@ const RegisterForm = () => {
             <div>
                 <p> Ao continuar, você concorda com o nosso contrato de usuário e nossa política de privacidade </p>
                 <input type='checkbox' id="opcao"/>
-                <label for='opcao'>
+                <label for="opcao">
                     Eu concordo em receber E-mails sobre coisas legais no LabEddit.
                 </label>
             </div>

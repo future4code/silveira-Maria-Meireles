@@ -39,3 +39,21 @@ export const deleteCommentVote = (id, setCommentState) => {
     }).catch((err) => {
     })
 }
+
+export const sendNewComment = (id, form) => {
+    const url = `${BASE_URL}/posts/${id}/comments`;
+    const acessToken = token;
+
+    axios
+      .post(url, form, {
+        headers: {
+          Authorization: acessToken,
+        },
+      })
+      .then((res) => {
+        alert("Comentário criado!");
+      })
+      .catch((err) => {
+        alert("Algo deu errao. Por favor, tente novamente.");
+      });
+  };

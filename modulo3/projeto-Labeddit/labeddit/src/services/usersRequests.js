@@ -9,6 +9,7 @@ export const login = (body, navigate) => {
     .then((res) => {
         localStorage.setItem("token", res.data.token);
         goToFeed(navigate);
+        console.log("funcionou")
 
     }).catch((err) => {
         console.log(err.response)

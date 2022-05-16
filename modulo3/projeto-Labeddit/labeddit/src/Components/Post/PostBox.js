@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import useRequestData from '../../Hooks/useRequestData'
 import { BASE_URL } from '../../constants/urls'
 import { goToPostComments } from '../../routes/coordinator'
 import { useNavigate } from 'react-router-dom'
-import { PostContainer } from './style'
+import { PostContainer, PostCard, PostAuthor, PostTitle, ContainerButtons, CommentIconContainer } from './style'
 import FeedButtons from '../FeedButtons/FeedButtons'
+import Comment from '../../assets/Comment.png'
 
 const PostBox = () => {
     const posts = useRequestData([], `${BASE_URL}/posts`)
@@ -13,29 +14,31 @@ const PostBox = () => {
     const onClickPost = (id) => {
       goToPostComments(navigate, id)
     }
-     console.log(posts)
-
+    
     const formatedPosts = posts && posts.map((post) => {
           return (
-            <PostContainer key={post.id}>
+            <PostCard key={post.id}>
               <div>
-                <span> {post.username} </span>
+                <PostAuthor> Enviado por: {post.username} </PostAuthor>
               </div>
-              <h3> {post.title} </h3>
+              <PostTitle> {post.title} </PostTitle>
               <p> {post.body} </p>
               
-              <div>
+              <ContainerButtons>
                 <FeedButtons id={post.id} votesQuantity={post.voteSum}/>
-                <button  onClick={() => onClickPost(post.id)}> {post.commentCount > 0 ? post.commentCount : 0} </button>
-              </div>
-            </PostContainer>
+                <CommentIconContainer>
+                  <button  onClick={() => onClickPost(post.id)}> <img src={Comment} /> </button>
+                  <p> {post.commentCount > 0 ? post.commentCount : 0} </p>
+                </CommentIconContainer>
+              </ContainerButtons>
+            </PostCard>
           );
         });
 
     return (
-      <div>
+      <PostContainer>
         {formatedPosts}
-      </div>
+      </PostContainer>
     );
 }
 

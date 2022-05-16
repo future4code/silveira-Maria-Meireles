@@ -2,7 +2,7 @@ import axios from 'axios'
 import { BASE_URL } from '../constants/urls'
 import { token } from '../constants/tokens'
 
-export const subVote = (id, setVote) => {
+export const subVote = (id, setUpVote) => {
     const url = `${BASE_URL}/posts/${id}/votes`
     const body = { direction: 1 }
 
@@ -10,11 +10,11 @@ export const subVote = (id, setVote) => {
         Authorization: token
     }})
     .then((res) => {
-        setVote(true);
+        setUpVote(true);
     }).catch((err) => {})
 };
 
-export const downVote = (id, setVote) => {
+export const downVote = (id, setDownVote) => {
     const url = `${BASE_URL}/posts/${id}/votes`
     const body = {direction: -1}
 
@@ -22,7 +22,7 @@ export const downVote = (id, setVote) => {
         Authorization: token
     }})
     .then((res) => {
-        setVote(true)
+        setDownVote(true)
     }).catch((err) => {
     })
 }
@@ -39,3 +39,22 @@ export const deleteVote = (id, setVote) => {
         console.log(err.response)
     })
 };
+
+export const sendNewPost = (form) => {
+    const url = `${BASE_URL}/posts`;
+    const acessToken = token;
+
+    axios
+      .post(url, form, {
+        headers: {
+          Authorization: acessToken,
+        },
+      })
+      .then((res) => {
+        alert("Post criado!");
+      })
+      .catch((err) => {
+          console.log(err.response)
+        alert("Algo deu errao. Por favor, tente novamente.");
+      });
+  };
