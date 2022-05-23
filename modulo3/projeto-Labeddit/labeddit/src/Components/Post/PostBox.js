@@ -1,45 +1,32 @@
-import React, { useEffect } from 'react'
-import useRequestData from '../../Hooks/useRequestData'
-import { BASE_URL } from '../../constants/urls'
-import { goToPostComments } from '../../routes/coordinator'
-import { useNavigate } from 'react-router-dom'
-import { PostContainer, PostCard, PostAuthor, PostTitle, ContainerButtons, CommentIconContainer } from './style'
-import FeedButtons from '../FeedButtons/FeedButtons'
-import Comment from '../../assets/Comment.png'
+import React, { useState } from "react";
+import { useParams } from "react-router-dom";
+import { BASE_URL } from "../../constants/urls";
+import useRequestData from "../../Hooks/useRequestData";
+import { createCommentVote, voteCommentDown } from "../../services/commentsRequests";
 
 const PostBox = () => {
-    const posts = useRequestData([], `${BASE_URL}/posts`)
-    const navigate = useNavigate();
+    const params = useParams()
+    const [postComments, setComments] = useRequestData([], `${BASE_URL}/posts/${params.id}/comments`)
 
-    const onClickPost = (id) => {
-      goToPostComments(navigate, id)
-    }
-    
-    const formatedPosts = posts && posts.map((post) => {
-          return (
-            <PostCard key={post.id}>
-              <div>
-                <PostAuthor> Enviado por: {post.username} </PostAuthor>
-              </div>
-              <PostTitle> {post.title} </PostTitle>
-              <p> {post.body} </p>
-              
-              <ContainerButtons>
-                <FeedButtons id={post.id} votesQuantity={post.voteSum}/>
-                <CommentIconContainer>
-                  <button  onClick={() => onClickPost(post.id)}> <img src={Comment} /> </button>
-                  <p> {post.commentCount > 0 ? post.commentCount : 0} </p>
-                </CommentIconContainer>
-              </ContainerButtons>
-            </PostCard>
-          );
-        });
+    const comments = postComments && postComments.map((comment) => {
+        return (
+            <div key={comment.id}>
+                <p> Enviado por: {comment.username} </p>
+                <p> {comment.body} </p>
 
+                <div>
+                    <button onClick={() => createCommentVote(comment.id)}> Positivo </button> 
+                    {comment.voteSum}
+                    <button onClick={() => voteCommentDown(comment.id)}> Negativo </button> 
+                </div>
+            </div>
+        )
+    })
     return (
-      <PostContainer>
-        {formatedPosts}
-      </PostContainer>
-    );
+        <div>
+            {comments.length > 0 ? comments : "Comentários vazios!"}
+        </div>
+    )
 }
 
 export default PostBox;

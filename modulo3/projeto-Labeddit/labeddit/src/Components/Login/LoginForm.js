@@ -1,50 +1,40 @@
-import React, { useEffect } from 'react'
-import useForm from '../../Hooks/useForm';
-import { login } from '../../services/usersRequests';
+import React from 'react'
+import useForm from '../../Hooks/useForm'
 import { useNavigate } from 'react-router-dom';
-import { FormContainer, Form, FormInputs, FormButtons} from './styled';
+import { login } from '../../services/usersRequests';
 
 const LoginForm = () => {
-    const [form, onChangeInputs, clearForm] = useForm({email: "", password: ""});
-    const navigate = useNavigate();
+    const navigate = useNavigate()
+    const [form, onChangeForm, clearFields] = useForm({email: '', password: ''});
 
-    const onSubmitLogin = (event) => {
+    const onSubmitForm = (event) => {
         event.preventDefault();
-        login(form, navigate);
-        clearForm();
-    };
-
-
+        login(form, navigate)
+        clearFields()
+    }
 
     return (
-        <FormContainer>
-            <Form onSubmit={onSubmitLogin}>
-                <FormInputs
+        <div>
+            <form onSubmit={onSubmitForm}>
+                <input
                 type='email'
-                placeholder='E-mail'
-                name={"email"}
+                name={'email'}
                 value={form.email}
-                onChange={onChangeInputs}
+                onChange={onChangeForm}
                 required
                 />
 
-                <FormInputs
+                <input
                 type='password'
-                placeholder='Senha'
-                name={"password"}
+                name={'password'}
                 value={form.password}
-                onChange={onChangeInputs}
+                onChange={onChangeForm}
                 required
                 />
 
-                <FormButtons
-                type='submit'
-                > 
-                Entrar 
-                </FormButtons>
-            </Form>
-        </FormContainer>
+                <button> Entrar </button>
+            </form>
+        </div>
     )
 }
-
 export default LoginForm;

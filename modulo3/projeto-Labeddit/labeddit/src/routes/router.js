@@ -10,8 +10,8 @@ const Router = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route index element={<SignOnPage/>} />
-                <Route path='/Cadastro' element={<SignInPage/>} />
+                <Route index element={<SignInPage/>} />
+                <Route path='/Cadastro' element={<SignOnPage/>} />
                 <Route path='/Feed' element={<FeedPage/>} />
                 <Route path='/ComentariosPost/:id' element={<PostCommentsPage/>} />
                 <Route path='*' element={<ErrorPage/> } /> 

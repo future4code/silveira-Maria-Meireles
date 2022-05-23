@@ -1,59 +1,46 @@
+import React from 'react'
 import axios from 'axios'
-import {BASE_URL} from '../constants/urls'
+import { BASE_URL } from '../constants/urls'
 import { token } from '../constants/tokens'
 
-export const supComment = (id, setCommentState) => {
-    const url = `${BASE_URL}/comments/${id}/votes`
-    const body = { direction: 1}
-
-    axios.post(url, body, {headers: {
-        Authorization: token
-    }})
-    .then((res) => {
-        setCommentState(true)
-    }).catch((err) => {
-    })
-} 
-
-export const downComment = (id, setCommentState) => {
-    const url = `${BASE_URL}/comments/${id}/votes`
-    const body = { direction: -1}
-
-    axios.put(url, body, {headers: {
-        Authorization: token
-    }})
-    .then((res) => {
-        setCommentState(true)
-    }).catch((err) => {
-    })
-}
-
-export const deleteCommentVote = (id, setCommentState) => {
-    const url = `${BASE_URL}/comments/${id}/votes`
-
-    axios.delete(url, {headers: {
-        Authorization: token
-    }})
-    .then((res) => {
-        setCommentState(false)
-    }).catch((err) => {
-    })
-}
 
 export const sendNewComment = (id, form) => {
-    const url = `${BASE_URL}/posts/${id}/comments`;
-    const acessToken = token;
+    const url = `${BASE_URL}/posts/${id}/comments`
 
-    axios
-      .post(url, form, {
+    axios.post(url, form, {
         headers: {
-          Authorization: acessToken,
-        },
-      })
-      .then((res) => {
-        alert("Comentário criado!");
-      })
-      .catch((err) => {
-        alert("Algo deu errao. Por favor, tente novamente.");
-      });
-  };
+            Authorization: token
+        }
+    })
+    .then((res) => {
+    }).catch((err) => {
+    })
+}
+
+export const createCommentVote = (id) => {
+    const url = `${BASE_URL}/comments/${id}/votes`
+    const body = {direction: 1}
+
+    axios.post(url, body, {
+        headers: {
+            Authorization: token
+        }
+    })
+    .then((res) => {
+    }).catch((err) => {
+    })
+}
+
+export const voteCommentDown = (id) => {
+    const url = `${BASE_URL}/comments/${id}/votes`
+    const body = {direction: -1}
+
+    axios.put(url, body, {
+        headers: {
+            Authorization: token
+        }
+    })
+    .then((res) => {
+    }).catch((err) => {
+    })
+}

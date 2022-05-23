@@ -1,22 +1,28 @@
-import {useEffect, useState} from 'react';
-import axios from 'axios';
-import { token } from '../constants/tokens';
+import React, {useState, useEffect} from 'react'
+import axios from 'axios'
+import { token } from '../constants/tokens'
 
-const useRequestData = (initialData, url) => {
-    const [data, setData] = useState(initialData);
+const useRequestData = (initialState, url) => {
+    const [data, setData] = useState(initialState)
 
     useEffect(() => {
-        axios.get(url, {headers: {
-            Authorization: token
-        }})
-        .then((res) => {
-            setData(res.data);
-        }).catch((err) => {
-            alert(err.message)
-        });
-        }, [url]);
+        getData()
+    }, [url])
 
-    return (data);
-};
+    const getData = () => {
+        axios.get(url, {
+            headers: {
+                Authorization: token
+            }
+        })
+        .then((res) => {
+            setData(res.data)
+        }).catch((err) => {
+            console.log(err.response)
+        })
+    } 
+
+    return [data]
+}
 
 export default useRequestData;

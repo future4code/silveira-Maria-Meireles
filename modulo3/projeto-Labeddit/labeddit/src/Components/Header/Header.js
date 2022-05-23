@@ -1,22 +1,16 @@
 import React from 'react'
-import LogoHeader from '../../assets/LogoHeader.png'
-import { useNavigate } from 'react-router'
-import { goToLogin } from '../../routes/coordinator';
-import { HeaderButton, HeaderContainer, HeadersLogo } from './style';
+import { goToLogin } from '../../routes/coordinator'
+import labelogo from '../../assets/labelogol.jpg'
+import {useNavigate} from 'react-router-dom'
 
 const Header = () => {
-    const navigate = useNavigate();
-
-    const logOut = () => {
-        localStorage.removeItem('token')
-        goToLogin(navigate)
-    }
-
+const navigate = useNavigate()
     return (
-        <HeaderContainer>
-            <HeadersLogo src={LogoHeader} />
-            <HeaderButton onClick={logOut}> Logout </HeaderButton>
-        </HeaderContainer>
+        <div>
+            <img src={labelogo} alt={'logo do header'} />
+            <button onClick={() => goToLogin(navigate)}> Login </button>
+        </div>
     )
-} 
-export default Header;
+}
+
+export default Header
