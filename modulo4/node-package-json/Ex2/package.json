@@ -1,0 +1,12 @@
+{
+  "name": "ex2",
+  "version": "1.0.0",
+  "description": "exercício pra mostrar nome, idade atual e daqui 7 anos.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./ex2.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Maria Eduarda",
+  "license": "ISC"
+}

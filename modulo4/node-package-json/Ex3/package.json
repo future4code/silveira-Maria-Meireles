@@ -1,0 +1,12 @@
+{
+  "name": "ex3",
+  "version": "1.0.0",
+  "description": "exercício que rece string e retorna uma operação aritmética",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./ex3.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Eduarda Pacheco",
+  "license": "ISC"
+}
