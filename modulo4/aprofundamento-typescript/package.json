@@ -1,0 +1,20 @@
+{
+  "name": "aprofundamento-typescript",
+  "version": "1.0.0",
+  "description": "Exercício de aprofundamento em typescript",
+  "main": "index.js",
+  "scripts": {
+
+    "start": "tsc && node ./build/ex.js && node ./build/ex3.js",
+    "start2": "tsc && node ./build/ex2.js",
+    "start3": "tsc && node ./build/ex3.js",
+    "start4": "tsc && node ./build/ex4.js",
+    "startExtra": "tsc && node ./build/extra.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Eduarda Pacheco",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^4.7.2"
+  }
+}
