@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-import { URL_base } from "../constants/urls";
+import { URL_base } from '../../constants/urls';
 
 export default class CardAdicionarMus extends React.Component {
     state = {

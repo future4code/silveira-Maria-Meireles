@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from "axios";
-import CardPlaylists from '../components/CardPlaylist';
-import { URL_base } from '../constants/urls';
+import CardPlaylists from '../../components/CardPlaylist/CardPlaylist';
+import { URL_base } from '../../constants/urls';
 
 export default class PaginaPlaylists extends React.Component{
     state = {
@@ -19,7 +19,7 @@ export default class PaginaPlaylists extends React.Component{
         }}).then((res)=> {
             this.setState({listaPlaylists: res.data.result.list})
         }).catch((err)=> {
-            console.log(err.message)
+            return <h1> Erro ao carregar playlists. (Conexão fraca) </h1>
         })
     };
 

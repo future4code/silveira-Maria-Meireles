@@ -1,7 +1,7 @@
 import React from "react";
-import PaginaHome from './pages/PaginaHome'
-import PaginaPlaylists from './pages/PaginaPlaylists'
-import PaginaDetalhe from './pages/PaginaDetalhe'
+import PaginaHome from './pages/PaginaHome/PaginaHome'
+import PaginaPlaylists from './pages/PaginaPlaylists/PaginaPlaylists'
+import PaginaDetalhe from './pages/PaginaDetalhes/PaginaDetalhe'
 import styled, {createGlobalStyle } from "styled-components";
 
 const FundoTelas = createGlobalStyle`
@@ -10,6 +10,10 @@ const FundoTelas = createGlobalStyle`
   margin: 0;
   padding: 0;
   color: white;
+
+  body {
+    position: relative;
+  }
 }
 `
 
