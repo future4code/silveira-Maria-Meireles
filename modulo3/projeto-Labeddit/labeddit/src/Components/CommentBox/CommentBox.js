@@ -1,33 +1,31 @@
 import React from 'react'
-import { sendNewComment } from '../../services/commentsRequests';
-import useForm from "../../Hooks/useForm";
+import useForm from '../../Hooks/useForm'
+import { useParams } from 'react-router-dom'
+import { sendNewComment } from '../../services/commentsRequests'
 
+const CommentBox = (props) => {
+    const params = useParams()
+    const [form, onChangeForm, clearFields] = useForm({body: ''})
 
-const CommentBox = (postId) => {
-    const [form, onChangeInputs, clearForm] = useForm({ body: "" });
-    const postID = postId.postId;
-
-    const onSubmitComment = (event) => {
-      event.preventDefault();
-      sendNewComment(postID, form);
-      clearForm()
+    const onSubmitForm = (event) => {
+        event.preventDefault()
+        sendNewComment(params.id, form)
+        clearFields()
     }
 
     return (
         <div>
-            <form onSubmit={onSubmitComment}>
+            <form onSubmit={onSubmitForm}>
                 <input 
                 type='text'
-                placeholder='Insira um comentário'
-                name={"body"}
+                placeholder='Escreva seu comentário...'
+                name={'body'}
                 value={form.body}
-                onChange={onChangeInputs}
+                onChange={onChangeForm}
                 required
                 />
 
-                <button type='submit'> 
-                Enviar 
-                </button>
+                <button> Comentar </button> 
             </form>
         </div>
     )

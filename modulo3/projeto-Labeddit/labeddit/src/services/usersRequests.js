@@ -1,29 +1,26 @@
+import React from 'react'
 import axios from 'axios'
-import { BASE_URL } from '../constants/urls'
 import { goToFeed } from '../routes/coordinator'
+import { BASE_URL } from '../constants/urls'
 
-export const login = (body, navigate) => {
+export const login = (form, navigate) => {
     const url = `${BASE_URL}/users/login`
+   
+    axios.post(url, form)
+        .then((res) => {
+            localStorage.setItem("token", res.data.token)
+            goToFeed(navigate)
+        }).catch((err) => {
+        })
+}
 
-    axios.post(url, body)
-    .then((res) => {
-        localStorage.setItem("token", res.data.token);
-        goToFeed(navigate);
-        console.log("funcionou")
-
-    }).catch((err) => {
-        console.log(err.response)
-    })
-};
-
-export const register = (body, navigate) => {
+export const register = (form, navigate) => {
     const url = `${BASE_URL}/users/signup`
 
-    axios.post(url, body)
+    axios.post(url, form)
     .then((res) => {
-        localStorage.setItem("token", res.data.token);
-        goToFeed(navigate);
+        localStorage.setItem("token", res.data.token)
+        goToFeed(navigate)
     }).catch((err) => {
-        console.log(err.reponse);
     })
-};
+}

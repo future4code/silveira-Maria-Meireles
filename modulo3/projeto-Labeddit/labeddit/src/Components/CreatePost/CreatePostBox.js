@@ -1,44 +1,42 @@
 import React from 'react';
 import useForm from "../../Hooks/useForm";
-import { CreateCommentForm, FormContainer } from './style';
-import { sendNewPost } from '../../services/postsRequests';
-import { PostButton } from './style';
+import {sendNewPost} from '../../services/postsRequests'
 
 const CreatePostBox = () => {
-    const [form, onChangeInputs, clearForm] = useForm({ title: "", body: "" });
+    const [form, onChangeForm, clearFields] = useForm({title: '', body: ''})
 
-    const onSubmitPost = (event) => {
-      event.preventDefault();
-      sendNewPost(form);
-      clearForm();
+    const onSubmitForm = (event) => {
+        event.preventDefault()
+        sendNewPost(form)
+        clearFields()
+
     }
 
     return (
-        <FormContainer>
-            <CreateCommentForm onSubmit={onSubmitPost}>
-                <input
-                type='text'
-                placeholder='Título'
-                name={"title"}
-                value={form.title}
-                onChange={onChangeInputs}
-                required
-                />
+        <div>
+            <form onSubmit={onSubmitForm}>
+            <input
+            type='text'
+            placeholder='Título'
+            name={'title'}
+            value={form.title}
+            onChange={onChangeForm}
+            required
+            />
 
-                <input className='postContent'
-                type='text'
-                placeholder='Escreva seu post...'
-                name={"body"}
-                value={form.body}
-                onChange={onChangeInputs}
-                required
-                />
+            <input 
+            type='text'
+            placeholder='Escreva seu post...'
+            name={'body'}
+            value={form.body}
+            onChange={onChangeForm}
+            required
+            />
 
-                <PostButton type='submit'> 
-                Enviar 
-                </PostButton>
-            </CreateCommentForm>
-        </FormContainer>
+            <button> Postar </button> 
+            </form>
+            <hr/>
+        </div>
     )
 }
 

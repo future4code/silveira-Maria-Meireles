@@ -1,56 +1,20 @@
 import React from 'react'
-import LoginForm from '../Components/Login/LoginForm';
-import Logo from '../assets/Logotipo.png'
-import { useNavigate } from 'react-router-dom';
-import { goToRegister } from '../routes/coordinator';
-import useUnprottectedPage from '../Hooks/useUnpprotectedPage';
-import styled from 'styled-components'
-import { FormButtons } from '../Components/Login/styled';
-
-const LoginContainer = styled.div`
-@media screen and (max-width: 680px){
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: auto;
-    width: 85%;
-    height: 100vh;
-
-    p {
-        border-top: 1px solid black;
-    }
-}
-`
-const RobotLogo = styled.img`
-@media screen and (max-width: 680px){
-   max-width: 60%;
-   margin: 30px 0 40px 0;
-}
-`
-const ContainerInputs = styled.div`
-display: flex;
-flex-direction: column;
-max-width: 100%;
-`
-
-const SeparationLine = styled.div`
- margin-top: 10px;
- border: 1px solid #FA7D2B;
-`
+import Header from '../Components/Header/Header';
+import RegisterForm from '../Components/Register/RegisterForm'
 
 const SignOnPage = () => {
-    useUnprottectedPage()
-    const navigate = useNavigate();
 
     return (
-        <LoginContainer>
-            <RobotLogo src={Logo} alt={"logo robô"}/>
-            <ContainerInputs>
-            <LoginForm/>
-                <SeparationLine/>
-                <FormButtons onClick={() => goToRegister(navigate)}> Crie uma conta! </FormButtons>
-            </ContainerInputs>
-        </LoginContainer>
+        <div>
+            <Header />
+            <h1> Olá! Boas vindas ao Labeddit! :) </h1>
+           <RegisterForm />
+           <p> Ao continuar, você concorda com nosso contrato de usuário e política de privacidade </p> 
+           <input type='checkbox' id='confirm'/>
+           <label for='confirm'>
+               Eu concordo em receber E-mails sobre coisas legais no Labeddit
+           </label>
+        </div>
     )
 }
 
