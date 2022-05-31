@@ -1,7 +1,9 @@
+import { convertTypeAcquisitionFromJson } from "typescript"
+
 type TemplateCliente = {
     cliente: string,
     saldoTotal: number,
-    debitos: Array<number | undefined>
+    debitos: Array<number>
 }
 
 const clientesBanco: TemplateCliente[] = [
@@ -13,3 +15,15 @@ const clientesBanco: TemplateCliente[] = [
 	{ cliente: "Soter", saldoTotal: 1200, debitos: [] }
 ]
 
+const checarNecessidadeDeEmprestimo = (clientes: Array<TemplateCliente>) => {
+	clientes.forEach((cliente) => {
+		const totalDebitos: number = cliente.debitos.reduce((a, b) => a + b, 0)
+		cliente.saldoTotal -= totalDebitos
+	})
+	const negativados = clientes.filter((cliente) => {
+		return cliente.saldoTotal < 0
+	})
+	return negativados;
+}
+
+console.log(checarNecessidadeDeEmprestimo(clientesBanco))
