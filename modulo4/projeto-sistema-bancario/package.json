@@ -1,0 +1,25 @@
+{
+  "name": "projeto-sistema-bancario",
+  "version": "1.0.0",
+  "description": "Projeto sistema bancário em typescript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc && node ./build/index.js",
+    "ts-start": "ts-node ./src/intes.ts",
+    "start-dev": "ts-node-dev ./src/index.ts"
+  },
+  "author": "Eduarda Pacheco",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "ts-node": "^10.8.0",
+    "typescript": "^4.7.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "ts-node-dev": "^2.0.0"
+  }
+}
