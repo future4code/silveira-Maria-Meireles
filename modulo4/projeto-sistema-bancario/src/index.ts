@@ -14,7 +14,7 @@ app.post("/clients", (req: Request, res: Response) => {
     const {name, cpf, dateOfBirth}: Client & {} = req.body;
     const [birthDay, birthMonth, birthYear]: string[] = dateOfBirth.split("/");
     const clientAge: number = 2022 - Number(birthYear)
-    const cpfs = clientsSystem.filter((client) => client.cpf === cpf)
+    const cpfs = clientsSystem.find((client) => client.cpf === Number(cpf))
 
     if(clientAge < 18) {
         errorStatus = 422;
