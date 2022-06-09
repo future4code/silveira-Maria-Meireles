@@ -47,7 +47,7 @@ const setMediaByGender = async (gender: string): Promise<any> => {
 }
 
 (async() => {
-    console.log(await getActorByName("JULIANA PAES"))
+    console.log(await getActorByName("Fernanda Montenegro"))
 })();
 
 (async() => {
@@ -65,6 +65,51 @@ const setMediaByGender = async (gender: string): Promise<any> => {
 (async() => {
     console.log(await setMediaByGender("male"))
 })();
+
+app.get("/actor", async (req: Request, res: Response) => {
+    const gender: string = req.query.gender as string;
+    try {
+        const countActorsByGender = await connection("actor")
+        .count("*").groupBy("gender").where("gender", gender)
+        res.status(200).send({message:  countActorsByGender})
+    } catch(error: any) {
+        res.status(500).send(error.message || error.sqlMessage)
+    }
+});
+
+app.put("/actor/:id", async (req: Request, res: Response) => {
+    const id: string = req.params.id as string
+    const salary: number = Number(req.body.salary) as number
+    try {
+        await updateActorsSalary(salary, id);
+
+        res.status(200).send({message: 'Salário alterado!'})
+    } catch(error: any) {
+        res.status(500).send(error.sqlMessage || error.message)
+    }
+})
+
+app.delete("/actor/:id", async (req: Request, res: Response) => {
+    const id: string = req.params.id as string
+    try {
+        await removeActorById(id)
+        res.status(200).send({message: "Ator deletado com sucesso!"})
+    } catch(error: any) {
+        res.status(500).send(error.sqlMessage || error.message)
+    }
+})
+
+app.get("/actor/:id", async (req: Request, res: Response) => {
+    const id: string = req.params.id as string;
+
+    try {
+        const actor = await connection("actor")
+        .select("*").where("id", id)
+        res.status(200).send({message: actor})
+    } catch(error: any) {
+        res.status(500).send(error.sqlMessage || error.message)
+    }
+})
 
 app.listen(3003, () => {
     console.log("Servidor rodando na porta 3003.")
