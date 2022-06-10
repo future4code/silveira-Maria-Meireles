@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "typescript": "^4.7.2"
+  },
+  "name": "lista-typescript",
+  "version": "1.0.0",
+  "description": "Lista de exercícios typeScript",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc && node ./build/ex1.js",
+    "start2": "tsc && node ./build/ex2.js",
+    "start3": "tsc && node ./build/ex3.js",
+    "start4": "tsc && node ./build/ex4.js",
+    "start5": "tsc && node ./build/ex5.js",
+    "start6": "tsc && node ./build/ex6.js",
+    "start7": "tsc && node ./build/ex7.js",
+    "start8": "tsc && node ./build/ex8.js",
+    "start9": "tsc && node ./build/ex9.js",
+    "start10": "tsc && node ./build/ex10.js",
+    "start11": "tsc && node ./build/ex11.js"
+  },
+  "author": "Eduarda Pacheco",
+  "license": "ISC"
+}
