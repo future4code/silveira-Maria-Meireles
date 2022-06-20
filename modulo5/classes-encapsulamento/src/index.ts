@@ -29,14 +29,14 @@ class Transaction {
         this.value = value;
         this.date = date
     }
-    public getDescription():void {
-        console.log(this.description)
+    public getDescription():string{
+        return this.description
     }
-    public getValue():void {
-        console.log(this.value)
+    public getValue():number {
+        return this.value
     }
-    public getDate():void {
-        console.log(this.date)
+    public getDate():string {
+        return this.date
     }
   }
   
@@ -95,6 +95,14 @@ class Transaction {
 
 newUser.setTransactions(payment)
 console.log(newUser)
+console.log(newUser.getName())
+console.log(newUser.getAge())
+console.log(newUser.getBalance())
+console.log(newUser.getCpf());
+console.log(newUser.getTransactions())
+console.log(payment.getDate())
+console.log(payment.getDescription())
+console.log(payment.getValue())
 
 
 app.listen(3003, () => {
