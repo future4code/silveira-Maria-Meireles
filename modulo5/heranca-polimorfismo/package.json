@@ -1,0 +1,18 @@
+{
+  "devDependencies": {
+    "@types/typescript": "^2.0.0"
+  },
+  "dependencies": {
+    "ts-node-dev": "^2.0.0"
+  },
+  "name": "heranca-polimorfismo",
+  "version": "1.0.0",
+  "description": "Exercícios da aula de herança e polimorfismo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-dev": "ts-node-dev ./src"
+  },
+  "author": "Eduarda Pacheco",
+  "license": "ISC"
+}
