@@ -1,0 +1,21 @@
+
+### 
+
+POST http://localhost:3306/user/signUp
+Content-Type: application/json
+
+{
+    "email": "seiLa@criatividadeDormiu.com",
+    "password": "TOCOMSONO",
+    "role": "admin"
+}
+
+###
+
+POST http://localhost:3306/user/signIn
+Content-type: application/json
+
+{
+    "email": "lokinho@deus.com",
+     "password": "melhorQueOthor"
+}
