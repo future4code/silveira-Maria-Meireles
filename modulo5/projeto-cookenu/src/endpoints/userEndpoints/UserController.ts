@@ -5,6 +5,7 @@ import IdGenerator from "../../sevices/idServices/IdGenerator";
 import User from "../../models/User";
 import Authenticator from "../../sevices/tokenServices/Authenticator";
 import { authenticationData } from "../../types/authenticationData";
+import IntermediateModel from "../../models/IntermediateModel";
 
 
 export default class UserController{
@@ -106,4 +107,119 @@ export default class UserController{
             res.send(error.message)
         }
     }
+
+    getUserByToken = async(req: Request, res: Response): Promise<void> => {
+
+        const token: string = req.headers.authorization as string
+        try{
+            if(!token) {
+                res.statusCode = 404;
+                res.statusMessage = "Not found"
+                throw new Error("Couldn't get the user Token.")
+            }
+
+            const authenticator: Authenticator = new Authenticator()
+            const tokenData = authenticator.getTokenData(token)
+
+             const userData: UserData = new UserData()
+             const userResult = await userData.getUserById(tokenData.id)
+
+             if(!userResult) {
+                res.statusCode = 404;
+                res.statusMessage = "Not found"
+                throw new Error("We couldn't find this user in our database.")
+            }
+
+            const user = {
+                id: userResult.id,
+                nome: userResult.nome,
+                email: userResult.email
+            }
+
+            res.status(200).send({data: {user: user}})
+        } catch(error: any) {
+            res.send(error.message)
+        }
+    }
+
+        getUserById = async(req: Request, res: Response): Promise<void> => {
+
+            const id: string = req.params.id as string;
+            const token: string = req.headers.authorization as string;
+
+            try{
+                if(!id) {
+                    res.statusCode = 406;
+                    res.statusMessage = "Not Acceptable"
+                    throw new Error("You need to send an id to get a user.")
+                }
+
+                if(!token) {
+                    res.statusCode = 404;
+                    res.statusMessage = "Not Found"
+                    throw new Error("You need your access token to get this information.")
+                }
+
+                const userData: UserData = new UserData()
+                const verifiedUser = await userData.getUserById(id)
+
+                if(!verifiedUser) {
+                    res.statusCode = 404;
+                    res.statusMessage = "Not found"
+                    throw new Error("We couldn't find this user.")
+                }
+
+                const user = {
+                    id: verifiedUser.id,
+                    name: verifiedUser.nome,
+                    email: verifiedUser.email
+                }
+                
+                res.status(200).send({data: {user: user}})
+            } catch(error: any) {
+                res.send(error.message)
+            }
+        }
+
+        followUser = async(req: Request, res: Response): Promise<void> => {
+
+            const token: string = req.headers.authorization as string
+            const id: string = req.body.id as string
+
+            try{
+                if(!id) {
+                    res.statusCode = 406;
+                    res.statusMessage = "Not Acceptable"
+                    throw new Error("You need to send the user's id.")
+                }
+
+                if(!token) {
+                    res.statusCode = 401;
+                    res.statusMessage = "Unauthorized"
+                    throw new Error("You need to login to execute this action.")
+                }
+
+                const authenticator: Authenticator = new Authenticator()
+                const tokenData = authenticator.getTokenData(token)
+                
+                
+                const userData: UserData = new UserData();
+                
+                const followedUser = await userData.getUserById(id)
+
+                if(!followedUser) {
+                    res.statusCode = 404;
+                    res.statusMessage = "Not Found"
+                    throw new Error("This user doesn't exist.")
+                }
+
+                const intermediateModel: IntermediateModel = new IntermediateModel(tokenData.id, followedUser.id)
+
+                userData.followUser(intermediateModel)
+
+                res.status(201).send({message: "User followed!"})
+            } catch(error: any) {
+                res.send(error.message)
+            }
+        }
 }

@@ -1,0 +1,59 @@
+POST http://localhost:3306/user/signUp
+Content-Type: application/json
+
+{
+    "nome": "Carole Crema",
+    "email": "contatoCarole@gmail.com",
+    "password": "queSejaDoce"
+}
+
+###
+# @name login
+POST http://localhost:3306/user/signIn
+Content-Type: application/json
+
+{
+    "email": "contatoJacquin@gmail.com",
+    "password": "pesadeloNaCozinha"
+}
+
+###
+
+@token = {{login.response.body.token}}
+GET http://localhost:3306/user/profile
+Content-Type: application/json
+Authorization: {{token}}
+
+### 
+
+GET http://localhost:3306/user/ba51c2bd-bb58-4bba-9227-ed38ea659e27
+Content-Type: application/json
+Authorization: {{token}}
+
+###
+
+POST http://localhost:3306/user/follow
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+    "id": "ba51c2bd-bb58-4bba-9227-ed38ea659e27"
+}
+
+###
+
+POST http://localhost:3306/recipe
+Content-Type: application/json
+
+{
+    "nome": "Petit Gâteau",
+    "descricao": "Ingredientes: 50 g de manteiga sem sal, 300 g de chocolate meio amargo, 5 gemas, 5 ovos inteiros, 170 g de açúcar (aproximadamente 1 xícara)100 g de farinha de trigo peneirada (aproximadamente 3/4 de xícara), 50 g de açúcar de confeiteiro para polvilhar, 4 forminhas redondas de 6 centímetros de diâmetro, de preferência antiaderentes, manteiga para untar as forminhas, sorvete de chocolate branco para acompanhar ao servir.  Modo de preparo: Preaqueça o forno a 180º C. Unte as forminhas com manteiga, ponha-as sobre uma assadeira e reserve. Derreta a manteiga e o chocolate no micro-ondas. Bata à mão as gemas, os ovos, o açúcar e, por último, a farinha. Adicione o chocolate derretido à mistura e continue batendo até obter uma massa homogênea. Ponha a massa nas forminhas e leve ao forno por 4 minutos ou até que a superfície dos bolinhos esteja assada. Desenforme cada bolinho num prato e polvilhe com o açúcar de confeiteiro. Sirva imediatamente com sorvete de chocolate branco."
+}
+
+###
+
+GET http://localhost:3306/recipe/3f151fe4-06c5-4543-947e-cdfe1e112071
+Content-Type: application/json
+Authorization: {{token}}
+
+###
