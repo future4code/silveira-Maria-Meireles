@@ -6,19 +6,27 @@ import User from "../../models/User";
 import Authenticator from "../../sevices/tokenServices/Authenticator";
 import { authenticationData } from "../../types/authenticationData";
 import IntermediateModel from "../../models/IntermediateModel";
+import { USER_ROLES } from "../../types/userType";
+import RecipeData from "../../data/RecipeData/RecipeData";
 
 
 export default class UserController{
 
     createNewUser = async (req: Request, res: Response): Promise<any> => {
 
-        const {nome, email, password} = req.body 
+        const {nome, email, password, role} = req.body 
         try{ 
 
-        if(!nome || !email || !password) {
+        if(!nome || !email || !password || !role) {
             res.statusCode = 406;
             res.statusMessage = "Not Acceptable"
             throw new Error("One of the fields is missing. Please, check your request.")
+        }
+
+        if(role.toLowerCase() !== USER_ROLES.NORMAL && role.toLowerCase() !== USER_ROLES.ADMIN) {
+            res.statusCode = 406;
+            res.statusMessage = "Not Acceptable"
+            throw new Error("Invalid type of user role.")
         }
 
         if(password.length < 6) {
@@ -49,16 +57,17 @@ export default class UserController{
         const hashManager: HashManager = new HashManager()
         const hashedPass: string = hashManager.generateHash(password)
 
-        const user = new User(id, nome, email, hashedPass)
+        const user = new User(id, nome, email, hashedPass, role)
 
         await userData.createNewUser(user)
 
         const payload: authenticationData = {
-            id: user.getUserId()
+            id: user.getUserId(),
+            role: user.getUserRole()
         }
-
         const authenticator: Authenticator = new Authenticator()
         const token: string = authenticator.generateToken(payload)
+    
 
         res.status(201).send({message: "User created!", token: token})
 
@@ -98,7 +107,8 @@ export default class UserController{
             }
 
             const payload: authenticationData = {
-                id: verifiedUser.id
+                id: verifiedUser.id,
+                role: verifiedUser.role
             }
             const token = new Authenticator().generateToken(payload)
 
@@ -218,6 +228,117 @@ export default class UserController{
                 userData.followUser(intermediateModel)
 
                 res.status(201).send({message: "User followed!"})
+            } catch(error: any) {
+                res.send(error.message)
+            }
+        }
+
+        unfollowUser = async(req: Request, res: Response): Promise<void> => {
+
+            const token: string = req.headers.authorization as string
+            const followed_id: string = req.body.followed_id as string
+
+            try{
+                if(!followed_id) {
+                    res.statusCode = 406;
+                    res.statusMessage = "Not Acceptable"
+                    throw new Error("You need to send the user's id")
+                }
+
+                if(!token) {
+                    res.statusCode = 401;
+                    res.statusMessage = "Unauthorized"
+                    throw new Error("You need to be signed to make this action.")
+                }
+
+                const authenticator: Authenticator = new Authenticator()
+                const tokenData = await authenticator.getTokenData(token)
+
+                const followerId = tokenData.id
+
+                const userData: UserData = new UserData()
+                const followed_user = await userData.getUserById(followed_id)
+
+                if(!followed_user) {
+                    res.statusCode = 404;
+                    res.statusMessage = "Not Found"
+                    throw new Error("We couldn't find this user.")
+                }
+
+                const verifyFollow = await userData.getIntermediateData(followerId, followed_id)
+               
+                if(!verifyFollow) {
+                    res.statusCode = 404;
+                    res.statusMessage = "Not Found"
+                    throw new Error("You aren't following this user.")
+                }
+
+                userData.unfollowUser(followerId, followed_id)
+
+                res.status(200).send({message: "User unfollowed."})
+            } catch(error: any) {
+                res.send(error.message)
+            }
+        }
+
+        getFeed = async(req: Request, res: Response): Promise<any> => {
+
+            const token: string = req.headers.authorization as string
+
+            try {
+                if(!token){
+                    res.statusCode = 401;
+                    res.statusMessage = "Unauthorized"
+                    throw new Error("You need to be signed to geet the recipes feed.")
+                }
+
+                const authenticator: Authenticator = new Authenticator()
+                const tokenData = await authenticator.getTokenData(token)
+                const followerId = tokenData.id
+                
+                const userData: UserData = new UserData()
+                const feed = await userData.getFeed(followerId)
+
+                res.status(200).send({data: {feed: feed}})
+            } catch(error: any) {
+                res.send(error.message)
+            }
+        }
+
+        deleteUserAccount = async(req: Request, res: Response):Promise<void> => {
+            const userId: string = req.params.id as string
+            try {
+            const token = req.headers.authorization as string
+
+            if(!token) {
+                res.statusCode = 401;
+                res.statusMessage = "Unauthorized"
+                throw new Error("You need to send your access token to execute this action.")
+            }
+
+            if(!userId) {
+                res.statusCode = 406;
+                res.statusMessage = "Not Acceptable"
+                throw new Error("You need to send the user's id")
+            }
+            const authenticator: Authenticator = new Authenticator()
+            const tokenData = authenticator.getTokenData(token)
+            const userRole = tokenData.role
+
+            if(userRole !== "admin") {
+                res.statusCode = 403;
+                res.statusMessage = "Forbidden"
+                throw new Error("You're not allowed to execute this action.")
+            }
+
+            const userData: UserData = new UserData()
+            const recipeData: RecipeData = new RecipeData()
+
+            recipeData.deleteRecipesCreator(userId)
+            userData.deleteIntermediateConnection(userId)
+            userData.deleteUserAccount(userId)
+
+            res.status(200).send({message: "User Deleted!"})
             } catch(error: any) {
                 res.send(error.message)
             }

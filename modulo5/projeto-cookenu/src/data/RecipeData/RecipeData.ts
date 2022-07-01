@@ -11,7 +11,8 @@ export default class RecipeData extends BaseDatabase {
             id: recipe.getRecipeId(),
             nome: recipe.getRecipeName(),
             descricao: recipe.getRecipeDescription(),
-            data_de_criacao: recipe.getRecipeDate()
+            data_de_criacao: recipe.getRecipeDate(),
+            creators_id: recipe.getCreatorsId()
         })
         .into(table)
     }
@@ -22,7 +23,31 @@ export default class RecipeData extends BaseDatabase {
         .select("*")
         .from(table)
         .where({id}) 
-
+        
         return recipe;
+    }
+
+    deleteUserRecipe = async(recipe_id: string): Promise<void> => {
+        await this.getConnection()
+        .delete()
+        .from(table)
+        .where({id: recipe_id})
+    }
+
+    deleteRecipesCreator = async(creators_id: string): Promise<void> => {
+        await this.getConnection()
+        .delete()
+        .from(table)
+        .where({creators_id})
+    }
+
+    updateRecipe = async(id: string, nome: string, descricao: string):Promise<void> => {
+        await this.getConnection()
+        .update({
+            nome,
+            descricao
+        })
+        .from(table)
+        .where({id})
     }
 } 

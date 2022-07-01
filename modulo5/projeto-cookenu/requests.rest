@@ -2,9 +2,10 @@ POST http://localhost:3306/user/signUp
 Content-Type: application/json
 
 {
-    "nome": "Carole Crema",
-    "email": "contatoCarole@gmail.com",
-    "password": "queSejaDoce"
+    "nome": "Lucas Corazza",
+    "email": "contatoLucas@gmail.com",
+    "password": "QuEsEjAdOcE",
+    "role": "normal"
 }
 
 ###
@@ -20,6 +21,13 @@ Content-Type: application/json
 ###
 
 @token = {{login.response.body.token}}
+
+GET http://localhost:3306/feed
+Content-Type: application/json
+Authorization: {{token}}
+
+###
+
 GET http://localhost:3306/user/profile
 Content-Type: application/json
 Authorization: {{token}}
@@ -37,13 +45,24 @@ Content-Type: application/json
 Authorization: {{token}}
 
 {
-    "id": "ba51c2bd-bb58-4bba-9227-ed38ea659e27"
+    "id": "23f4f4ef-93a1-4adc-8044-30b3174d3761"
+}
+
+###
+
+POST http://localhost:3306/user/unfollow
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+    "followed_id": "ba51c2bd-bb58-4bba-9227-ed38ea659e27"
 }
 
 ###
 
 POST http://localhost:3306/recipe
 Content-Type: application/json
+Authorization: {{token}}
 
 {
     "nome": "Petit Gâteau",
@@ -55,5 +74,15 @@ Content-Type: application/json
 GET http://localhost:3306/recipe/3f151fe4-06c5-4543-947e-cdfe1e112071
 Content-Type: application/json
 Authorization: {{token}}
+
+###
+
+DELETE http://localhost:3306/recipe/delete 
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+    "recipeId": "c3ebf945-bbd3-4b77-a70a-68b551364f51"
+}
 
 ###

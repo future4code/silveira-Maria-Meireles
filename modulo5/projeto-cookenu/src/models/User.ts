@@ -3,7 +3,8 @@ export default class User{
         private id: string, 
         private nome:string,
         private email: string,
-        private password: string
+        private password: string,
+        private role: string
         ){}
 
         public getUserId = (): string => {
@@ -20,5 +21,9 @@ export default class User{
 
         public getUserPassword = ():string => {
             return this.password
+        }
+
+        public getUserRole = (): string => {
+            return this.role
         }
 }
