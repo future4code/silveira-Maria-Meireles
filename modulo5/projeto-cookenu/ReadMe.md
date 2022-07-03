@@ -56,6 +56,7 @@ Pega o feed de receitas criadas pelos usuários que você segue. Possui verifica
 Deleta o perfil de um usuário do sistema. Verifica se o usuário tentando deletar o perfil é um administrador, já que essa funcionalidade é isolada apenas para eles.
 
 <br>
+
 ### Receitas :spaghetti: :fork_and_knife:
 
 #### - Criar receita:
