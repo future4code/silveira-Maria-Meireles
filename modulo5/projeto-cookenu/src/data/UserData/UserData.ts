@@ -66,13 +66,20 @@ export default class UserData extends BaseDatabase{
     getFeed = async(follower_id: string): Promise<any> => {
 
         const feed =  await this.getConnection()
-        .select("*")
-        .from(intermediateTable)
-        .join(table, "cookenu_users.id", "following_users.followed_id")
-        .join(recipesTable, "cookenu_recipes.creators_id", "following_users.followed_id")
-        .where({ follower_id: follower_id})
+        .select(
+            "cookenu_users.nome as name", 
+            "cookenu_users.id", 
+            "cookenu_recipes.nome", 
+            "cookenu_recipes.descricao", 
+            "cookenu_recipes.data_de_criacao", 
+            "cookenu_recipes.creators_id"
+            )
+            .from(intermediateTable)
+            .join(table, "cookenu_users.id", "following_users.followed_id")
+            .join(recipesTable, "cookenu_recipes.creators_id", "following_users.followed_id")
+            .where({ follower_id: follower_id})
 
-        return feed;
+            return feed;
     }
 
     deleteUserAccount = async (id:string):Promise<void> => {
