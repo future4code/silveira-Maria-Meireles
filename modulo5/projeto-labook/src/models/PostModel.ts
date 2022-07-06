@@ -2,7 +2,7 @@ export default class PostModel {
     constructor(
         private id: string,
         private photo: string,
-        private creationDate: string,
+        private creation_date: string,
         private description: string,
         private type: string
     ){}
@@ -16,7 +16,7 @@ export default class PostModel {
     }
 
     public getCreationDate = (): string => {
-        return this.creationDate
+        return this.creation_date
     }
 
     public getPostDescription = (): string => {

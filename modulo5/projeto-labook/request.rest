@@ -5,20 +5,40 @@ Content-Type: application/json
 
 {
     "name": "Maria Eduarda",
-    "email": "eduardapmeireles@labenu.com",
+    "email": "eduapmeireles@lanu.com",
     "password": "123456",
     "role": "admin"
 }
 
 ### 
-# @token = {{login.response.body.token}}
+@token = {{login.response.body.token}}
 
-POST http:///localhost:3306/user/signIn
+### 
+
+POST http://localhost:3306/user/signIn
 Content-Type: application/json
 
 {
-    "email": "eduardapmeireles@hotmail.com",
+    "email": "eduardapmeireles@labenu.com",
     "password": "123456"
 }
+
+###
+
+POST http://localhost:3306/post/create
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+    "photo": "8y2uewhjdshjjh",
+    "description": "Teste",
+    "type": "normal"
+}
+
+###
+
+GET http://localhost:3306/post/7639ce90-01ea-47c3-9d5e-90631184c3fa
+Content-Type: application/json
+Authorization: {{token}}
 
 ###
