@@ -56,4 +56,11 @@ export default class UserDatabase extends BaseDatabase {
 
         return existanceVerified;
     }
+
+    remomeFriendship = async(user_id: string, friends_id: string): Promise<void> => {
+        await this.getConnection()
+        .delete()
+        .from(this.intermediateTable)
+        .where({user_id, friends_id})
+    }
 }

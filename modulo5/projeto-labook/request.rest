@@ -38,6 +38,12 @@ Authorization: {{token}}
 
 ###
 
+POST http://localhost:3306/user/remomeFriend/18af4f6f-f592-41aa-8e86-7fbd2acfcad6
+Content-Type: application/json
+Authorization: {{token}}
+
+###
+
 POST http://localhost:3306/post/create
 Content-Type: application/json
 Authorization: {{token}}

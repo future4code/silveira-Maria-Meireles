@@ -108,7 +108,6 @@ export default class UserBusiness {
 
     addNewFriend = async(data: {id: string, token: string}, res: any):Promise<void> => {
         const {id, token} = data
-        console.log(token)
 
         if(!token) {
             res.statusCode = 401;
@@ -151,5 +150,50 @@ export default class UserBusiness {
         const newFriend = new IntermediateModel(userId, verifiedUserExistance.id)
 
         await userDatabase.insertFriendship(newFriend)
+    }
+
+    removeFriend = async(data: {id: string, token: string}, res: any): Promise<void> => {
+        const {id, token} = data
+
+        if(!token) {
+            res.statusCode = 401;
+            res.statusMessage = "Unauthorized"
+            throw new Error("You need to sign in to add a new friend.")
+        }
+
+        if(!id) {
+            res.statusMessage = 406
+            res.statusMessage = "Not Acceptable"
+            throw new Error("You need to send the user's id to execute this action.")
+        }
+
+        const userDatabase = new UserDatabase()
+        const verifiedUserExistance = await userDatabase.getUserById(id)
+
+        if(!verifiedUserExistance) {
+            res.statusCode = 404
+            res.statusMessage = "Not Found"
+            throw new Error("User Not found. Check the id.")
+        }
+        const authenticator = new Authenticator()
+        const tokenData =  authenticator.getTokenData(token)
+        
+        if(!tokenData){
+            res.statusCode = 404
+            res.statusMessage = "Not Found"
+            throw new Error("We couldn't find this token. Check if it's correct.")
+        }
+
+        const userId = tokenData.id
+
+        const verifiedFriendship = await userDatabase.checkFriendshipExistence(userId, id)
+
+        if(!verifiedFriendship) {
+            res.statusCode = 404
+            res.statusMessage = "Not Found"
+            throw new Error("You're not friend's with this person.")
+        }
+
+    await userDatabase.remomeFriendship(userId, id)
     }
 }

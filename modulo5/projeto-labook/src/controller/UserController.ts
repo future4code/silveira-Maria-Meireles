@@ -64,4 +64,25 @@ export default class UserController {
             res.send(error.message)
         }
     }
+
+    removeFriend = async(req: Request, res: Response): Promise<void> => {
+        const id: string = req.params.id as string
+        const token: string = req.headers.authorization as string
+
+        try  {
+            const data = {
+                id,
+                token
+            }
+
+            const response: Response = res
+
+            const userBusiness = new UserBusiness()
+            await userBusiness.removeFriend(data, response)
+
+            res.status(200).send({message: "Friend removed."})
+        } catch(error: any) {
+            res.send(error.message)
+        }
+    }
 }
