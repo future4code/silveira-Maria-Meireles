@@ -43,4 +43,25 @@ export default class UserController {
             res.send(error.message)
         }
     }
+
+    addFriendship = async(req: Request, res: Response):Promise<void> => {
+        const id:string = req.params.id as string;
+        const token: string = req.headers.authorization as string
+
+        try {
+            const data = {
+                id,
+                token
+            }
+
+            const response: Response = res
+
+            const userBusiness = new UserBusiness()
+            await userBusiness.addNewFriend(data, response)
+
+            res.status(201).send({message: "Friendship registered!"})
+        }catch(error: any) {
+            res.send(error.message)
+        }
+    }
 }

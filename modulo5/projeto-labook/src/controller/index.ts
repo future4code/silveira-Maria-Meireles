@@ -11,6 +11,7 @@ const postController = new PostController()
 
 app.post("/user/signUp", userController.createUser)
 app.post("/user/signIn", userController.signIn)
+app.post("/user/addFriend/:id", userController.addFriendship)
 
 app.post("/post/create", postController.createPost)
 app.get("/post/:id", postController.getPostById)

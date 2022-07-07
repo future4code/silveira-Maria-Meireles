@@ -1,5 +1,5 @@
 
-# @name login
+# @name register
 POST http://localhost:3306/user/signUp
 Content-Type: application/json
 
@@ -11,9 +11,12 @@ Content-Type: application/json
 }
 
 ### 
-@token = {{login.response.body.token}}
+@token = {{register.response.body.token}}
+
+
 
 ### 
+# @name login
 
 POST http://localhost:3306/user/signIn
 Content-Type: application/json
@@ -22,6 +25,16 @@ Content-Type: application/json
     "email": "eduardapmeireles@labenu.com",
     "password": "123456"
 }
+
+###
+
+@token = {{login.response.body.token}}
+
+###
+
+POST http://localhost:3306/user/addFriend/18af4f6f-f592-41aa-8e86-7fbd2acfcad6
+Content-Type: application/json
+Authorization: {{token}}
 
 ###
 

@@ -3,7 +3,7 @@ import PostBusiness from '../business/PostBusiness'
 import { postInput } from '../types/postInput'
 
 export default class PostController {
-    createPost = async(req: Request, res: Response) => {
+    createPost = async(req: Request, res: Response):Promise<void> => {
 
         const {photo, creation_date, description, type} = req.body
 

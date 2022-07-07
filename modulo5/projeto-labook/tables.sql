@@ -17,3 +17,12 @@ CREATE TABLE labook_posts(
     description TEXT NOT NULL,
     type VARCHAR(255) NOT NULL DEFAULT "normal"
 );
+
+SELECT * FROM labook_posts;
+
+CREATE TABLE intermediate_friends (
+    user_id VARCHAR(255) NOT NULL,
+    friends_id VARCHAR(255) NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES labook_users(id),
+    FOREIGN KEY (friends_id) REFERENCES labook_users(id)
+);
