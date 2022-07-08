@@ -8,7 +8,7 @@ CREATE TABLE labook_users (
     role VARCHAR(255) NOT NULL DEFAULT = "normal" 
 );
 
-ALTER TABLE CHANGE COLUMN role role VARCHAR(255) NOT NULL DEFAULT = "normal"
+ALTER TABLE CHANGE COLUMN role role VARCHAR(255) NOT NULL DEFAULT "normal";
 SELECT * FROM labook_users;
 
 CREATE TABLE labook_posts(
@@ -37,3 +37,12 @@ CREATE TABLE labook_posts(
 );
 
 SELECT * FROM labook_posts;
+
+CREATE TABLE intermediate_likes (
+    user_id VARCHAR(255) NOT NULL,
+    posts_id VARCHAR(255) NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES labook_users(id),
+    FOREIGN KEY (posts_id) REFERENCES labook_posts(id)
+);
+
+SELECT * FROM intermediate_likes;

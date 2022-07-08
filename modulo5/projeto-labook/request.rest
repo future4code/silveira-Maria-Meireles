@@ -67,3 +67,9 @@ Content-Type: application/json
 Authorization: {{token}}
 
 ###
+
+POST http://localhost:3306/post/like/7e92c691-b575-42dc-8742-23dfa28348f9
+Content-Type: application/json
+Authorization: {{token}}
+
+###

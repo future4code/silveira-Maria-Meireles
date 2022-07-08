@@ -1,5 +1,6 @@
 import moment from "moment";
 import PostDataBase from "../data/PostDataBase";
+import LikeModel from "../models/LikesModel";
 import PostModel from "../models/PostModel";
 import Authenticator from "../services/Authenticator";
 import IdGenerator from "../services/IdGenerator";
@@ -95,5 +96,59 @@ export default class PostBusiness {
         }
 
         return post
+    }
+
+    addLike = async(data: {id: string, token: string}, res: any): Promise<void> => {
+        const {id, token} = data
+
+        const authenticator = new Authenticator()
+        const tokenData = authenticator.getTokenData(token)
+        const userId: string = tokenData.id
+
+        if(!token || !tokenData) {
+            res.statusCode = 401
+            res.statusMessage = "Unauthorized"
+            throw new Error("You need a valid access token to execute this action.")
+        }
+
+        if(!id) {
+            res.statusCode = 406
+            res.statusMessage = "Not Acceptable"
+            throw new Error("You can only like a post if you send it's id.")
+        }
+        const postDatabase = new PostDataBase()
+        const verifiedLike = await postDatabase.verifyLikeExistance(userId, id)
+
+        if(verifiedLike) {
+            res.statusCode = 406
+            res.statusMessage = "Not Acceptable"
+            throw new Error("You already liked this post.")
+        }
+        const like = new LikeModel(userId, id)
+    
+         await postDatabase.insertPostLike(like)
+    }
+
+    removeLike = async(data: {id: string, token: string}, res: any): Promise<void> => {
+        const {id, token} = data
+
+        const authenticator = new Authenticator()
+        const tokenData = authenticator.getTokenData(token)
+        // const userId: string = tokenData.id
+
+        if(!token || !tokenData){
+            res.statusCode = 401
+            res.statusMessage = "Not Acceptable"
+            throw new Error("You need a valid access token to execute this action.")
+        }
+
+        if(!id) {
+            res.statusCode = 406
+            res.statusMessage = "Not Acceptable"
+            throw new Error("You need to send the post's id to like it.")
+        }
+
+        // const postDataBase = new PostDataBase()
+
     }
 }

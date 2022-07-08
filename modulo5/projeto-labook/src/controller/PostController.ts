@@ -41,4 +41,26 @@ export default class PostController {
             res.send(error.message)
         }
     }
+
+    addLike = async(req: Request, res: Response): Promise<void> => {
+        const id: string = req.params.id as string
+        const token: string = req.headers.authorization as string
+
+        try {
+
+            const response: Response = res
+
+            const data = {
+                id,
+                token
+            }
+
+            const postBusiness = new PostBusiness()
+            await postBusiness.addLike(data, response)
+
+            res.status(200).send({message: "Post liked!"})
+        }catch(error: any) {
+            res.send(error.message)
+        }
+    }
 }
