@@ -1,0 +1,27 @@
+POST http://localhost:3003/user/signUp
+Content-Type: application/json
+
+{
+    "email": "eduarditkdssdm@gmailcom",
+    "password": "123456"
+}
+
+### 
+# @name Login
+POST http://localhost:3003/user/signIn
+Content-Type: application/json
+
+{
+    "email": "eduardita@loanss.com",
+    "password": "1234567810"
+}
+
+###
+
+@token = {{Login.response.body.token}}
+
+GET http://localhost:3003/user/6513fffd-0355-4667-901f-6a0cb50fe7e7
+Content-Type: application/json
+Authorization: {{token}}
+
+###
