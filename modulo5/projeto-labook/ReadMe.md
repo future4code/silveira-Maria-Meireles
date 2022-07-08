@@ -6,6 +6,10 @@ Esse projeto simula um sistema parecido com o Facebook, onde podemos criar o nos
 
 <br>
 
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/QHQNwh5/LABOOK-1.png" alt="LABOOK-1" border="0"></a>
+
+<br>
+
 ## Tecnologias utilizadas :computer: 
 
 <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white"/>
