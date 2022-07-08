@@ -49,3 +49,12 @@ Adiciona um novo post ao perfil do usuário. Possui verificação de login com o
 
 #### - Pegar um post:
 Pega um post pelo id dele. Possui verificação da existência desse post no sistema. Também verifica se o usuário está logado através do token de acesso.
+
+#### - Ver o feed:
+Pega o feed de posts com todos os posts das pessoas que o usuário segue. Possui verificação do token de autenticação e também verifica a existência dos posts.
+
+#### - Curtir um post:
+Curte um post através do id enviado. Possui verificação do token. Também verifica se esse post já foi curtido por esse usuário.
+
+#### - Descurtir um post:
+Descurte um post. Possui verificação de token de acesso. Também verifica se o post foi curtido antes de descurtir.
