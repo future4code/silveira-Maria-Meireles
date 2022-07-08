@@ -4,9 +4,9 @@ POST http://localhost:3306/user/signUp
 Content-Type: application/json
 
 {
-    "name": "Thor",
-    "email": "meioChato@gmail.com",
-    "password": "123456",
+    "name": "",
+    "email": "",
+    "password": "",
     "role": ""
 }
 
@@ -22,8 +22,8 @@ POST http://localhost:3306/user/signIn
 Content-Type: application/json
 
 {
-    "email": "deusDaTramoia@omelhor.com",
-    "password": "123456"
+    "email": "",
+    "password": ""
 }
 
 ###
@@ -55,9 +55,9 @@ Content-Type: application/json
 Authorization: {{token}}
 
 {
-    "photo": "https://chicorei.imgix.net/18411/310e4320-ddff-11ec-b195-4f31b370b1c8.jpg?auto=compress,format&q=65&w=425&h=600&fit=crop&crop=top&markpad=0&mark=https%3A%2F%2Fchico-rei.imgix.net%2Fimages%2Fsite%2Fproduct%2Fselo-desgaste.png%3Fauto%3Dformat%26w%3D0.60",
-    "description": "Alguèm sabe onde eu consigo encontrar essa blusa?",
-    "type": "normal"
+    "photo": "",
+    "description": "",
+    "type": ""
 }
 
 ###
@@ -69,6 +69,12 @@ Authorization: {{token}}
 ###
 
 POST http://localhost:3306/post/like/7e92c691-b575-42dc-8742-23dfa28348f9
+Content-Type: application/json
+Authorization: {{token}}
+
+###
+
+POST http://localhost:3306/post/removeLike/7e92c691-b575-42dc-8742-23dfa28348f9
 Content-Type: application/json
 Authorization: {{token}}
 

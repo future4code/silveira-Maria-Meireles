@@ -18,6 +18,7 @@ app.get("/user/feed", userController.getUserFeed)
 app.post("/post/create", postController.createPost)
 app.get("/post/:id", postController.getPostById)
 app.post("/post/like/:id", postController.addLike)
+app.post("/post/removeLike/:id", postController.removeLike)
 
 const server = app.listen(process.env.DB_PORT || 3003, () => {
     if(server) {

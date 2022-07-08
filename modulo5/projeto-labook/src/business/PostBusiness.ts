@@ -134,7 +134,7 @@ export default class PostBusiness {
 
         const authenticator = new Authenticator()
         const tokenData = authenticator.getTokenData(token)
-        // const userId: string = tokenData.id
+        const userId: string = tokenData.id
 
         if(!token || !tokenData){
             res.statusCode = 401
@@ -148,7 +148,15 @@ export default class PostBusiness {
             throw new Error("You need to send the post's id to like it.")
         }
 
-        // const postDataBase = new PostDataBase()
+        const postDataBase = new PostDataBase()
+        const verifiedLike = await postDataBase.verifyLikeExistance(userId, id)
 
+        if(!verifiedLike) {
+            res.statusCode = 404
+            res.statusMessage = "Not Found"
+            throw new Error("You didn't liked this post.")
+        }
+        
+        await postDataBase.removeLike(userId, id)
     }
 }
