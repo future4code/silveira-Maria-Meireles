@@ -7,16 +7,22 @@ import UserModel from "../models/UserModel";
 import { authenticationData } from "../types/authenticationData";
 import Authenticator from "../services/Authenticator";
 import IntermediateModel from "../models/IntermediateModel";
+import { postType } from "../types/postType";
 
 export default class UserBusiness {
     createUser = async(user: userInput, res: any) => {
        
-            const {name, email, password, role} = user
+            const {name, email, password} = user
+            let role = user.role
 
-            if(!name || !email || !password || !role) {
+            if(!name || !email || !password) {
                 res.statusCode = 406;
                 res.statusMessage = "Not Acceptable"
                 throw new Error("There's an empty field. Check your request before sending again.")
+            }
+
+            if(role === "") {
+                role = 'normal'
             }
 
             if(role.toLowerCase() !== userRoles.NORMAL && role.toLowerCase() !== userRoles.ADMIN) {
@@ -195,5 +201,35 @@ export default class UserBusiness {
         }
 
     await userDatabase.remomeFriendship(userId, id)
+    }
+
+    getUsersFeed = async(token: string, res: any): Promise<postType[]> => {
+        
+        if(!token){
+            res.statusCode = 401;
+            res.statusMessage = "Unauthorized"
+            throw new Error("You need to signIn to see your feed.")
+        }
+
+        const authenticator = new Authenticator()
+        const tokenData = authenticator.getTokenData(token)
+        const userId: string = tokenData.id
+
+        if(!userId) {
+            res.statusCode = 404;
+            res.statusMessage = "Not Found"
+            throw new Error("We couldn't find this user.")
+        }
+
+        const userDatabase = new UserDatabase()
+        const usersFeed = await userDatabase.getFeed(userId)
+
+        if(!usersFeed || usersFeed === []) {
+            res.statusCode = 404
+            res.statusMessage = "Not found"
+            throw new Error("We couldn't find any posts. Make new friends to see more.")
+        }
+
+        return usersFeed;
     }
 }

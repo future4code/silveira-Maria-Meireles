@@ -1,5 +1,6 @@
 import { Request, Response } from 'express'
 import UserBusiness from '../business/UserBusiness'
+import { postType } from '../types/postType';
 import { userInput } from '../types/userInput';
 
 export default class UserController {
@@ -81,6 +82,21 @@ export default class UserController {
             await userBusiness.removeFriend(data, response)
 
             res.status(200).send({message: "Friend removed."})
+        } catch(error: any) {
+            res.send(error.message)
+        }
+    }
+
+    getUserFeed = async(req: Request, res: Response): Promise<void> => {
+        const token: string = req.headers.authorization as string
+
+        try {
+            const userBusiness = new UserBusiness()
+            const response: Response = res
+
+            const postsList: postType[] = await userBusiness.getUsersFeed(token, response)
+
+            res.status(200).send({data: postsList})
         } catch(error: any) {
             res.send(error.message)
         }

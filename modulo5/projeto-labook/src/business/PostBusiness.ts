@@ -1,6 +1,7 @@
 import moment from "moment";
 import PostDataBase from "../data/PostDataBase";
 import PostModel from "../models/PostModel";
+import Authenticator from "../services/Authenticator";
 import IdGenerator from "../services/IdGenerator";
 import { postInput } from "../types/postInput";
 import { postType } from "../types/postType";
@@ -13,11 +14,16 @@ export default class PostBusiness {
         const {photo, description, type} = postData
         const creation_date: string = moment().format("YYYY/MM/DD")
 
-        if(!token) {
+        const authenticator: Authenticator = new Authenticator()
+        const tokenData = authenticator.getTokenData(token)
+
+        if(!token || !tokenData) {
             res.statusCode = 401;
             res.statusMessage = "Unauthorized"
-            throw new Error("You need an access token to execute this action.")
+            throw new Error("You need a valid access token to execute this action.")
         }
+
+        const creators_id: string = tokenData.id
 
         if(!photo || !description || !type) {
             res.statusCode = 406;
@@ -39,7 +45,8 @@ export default class PostBusiness {
             photo,
             creation_date,
             description,
-            type
+            type,
+            creators_id
         }
 
         const postDataBase: PostDataBase = new PostDataBase()
@@ -51,7 +58,7 @@ export default class PostBusiness {
             throw new Error("This post alrady exists.")
         }
         
-        const post = new PostModel(id, photo, creation_date, description, type)
+        const post = new PostModel(id, photo, creation_date, description, type, creators_id)
         await postDataBase.insertPost(post)
     }
 
@@ -83,7 +90,8 @@ export default class PostBusiness {
             photo: verifiedPost.photo,
             creation_date: verifiedPost.creation_date,
             description: verifiedPost.description,
-            type: verifiedPost.type
+            type: verifiedPost.type,
+            creators_id: verifiedPost.creators_id
         }
 
         return post

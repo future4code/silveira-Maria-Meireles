@@ -4,7 +4,8 @@ export default class PostModel {
         private photo: string,
         private creation_date: string,
         private description: string,
-        private type: string
+        private type: string,
+        private creators_id: string
     ){}
 
     public getPostId = (): string => {
@@ -27,4 +28,7 @@ export default class PostModel {
         return this.type
     }
 
+    public getCreatorsId = (): string => {
+        return this.creators_id
+    }
 }

@@ -12,7 +12,8 @@ export default class PostDataBase extends BaseDatabase{
             photo: post.getPostPhoto(),
             creation_date: post.getCreationDate(),
             description: post.getPostDescription(),
-            type: post.getPostType()
+            type: post.getPostType(),
+            creators_id: post.getCreatorsId()
         })
         .into(this.table)
     }

@@ -3,5 +3,6 @@ export type postType = {
     photo: string,
     creation_date: string,
     description: string,
-    type: string
+    type: string,
+    creators_id: string
 }
