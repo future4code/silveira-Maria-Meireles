@@ -1,12 +1,12 @@
 import express from "express"
 import cors from "cors"
 
-interface User {
+export interface User {
     name: string
     balance: number
 }
 
-const performPurchase = (user: User, value: number): User | undefined => {
+export const performPurchase = (user: User, value: number): User | undefined => {
     const purchaseValue: number = value
     if(user.balance >= purchaseValue) {
         const UpdatedUser: User = {
