@@ -1,0 +1,81 @@
+
+# @name register
+POST http://localhost:3306/user/signUp
+Content-Type: application/json
+
+{
+    "name": "",
+    "email": "",
+    "password": "",
+    "role": ""
+}
+
+### 
+@token = {{register.response.body.token}}
+
+
+
+### 
+# @name login
+
+POST http://localhost:3306/user/signIn
+Content-Type: application/json
+
+{
+    "email": "",
+    "password": ""
+}
+
+###
+
+@token = {{login.response.body.token}}
+
+###
+
+POST http://localhost:3306/user/addFriend/f57cf2d1-2bd4-43aa-a716-bfd50d991d23
+Content-Type: application/json
+Authorization: {{token}}
+
+###
+
+POST http://localhost:3306/user/removeFriend/18af4f6f-f592-41aa-8e86-7fbd2acfcad6
+Content-Type: application/json
+Authorization: {{token}}
+
+###
+
+GET http://localhost:3306/user/feed
+Content-Type: application/json
+Authorization: {{token}}
+
+###
+
+POST http://localhost:3306/post/create
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+    "photo": "",
+    "description": "",
+    "type": ""
+}
+
+###
+
+GET http://localhost:3306/post/7639ce90-01ea-47c3-9d5e-90631184c3fa
+Content-Type: application/json
+Authorization: {{token}}
+
+###
+
+POST http://localhost:3306/post/like/7e92c691-b575-42dc-8742-23dfa28348f9
+Content-Type: application/json
+Authorization: {{token}}
+
+###
+
+POST http://localhost:3306/post/removeLike/7e92c691-b575-42dc-8742-23dfa28348f9
+Content-Type: application/json
+Authorization: {{token}}
+
+###
