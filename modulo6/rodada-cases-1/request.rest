@@ -1,0 +1,28 @@
+# @name SignUp
+
+POST http://localhost:3306/seller/signUp
+Content-Type: application/json
+
+{
+    "name": "Maria Eduarda",
+    "email": "duda@benu.com",
+    "password": "banana"
+}
+
+### 
+
+@token = {{SignUp.response.body.token}}
+
+### 
+
+# @name SignIn
+
+POST http://localhost:3306/seller/signIn
+Content-Type: application/json
+
+{
+    "email": "duda@labenu.com",
+    "passoword": "bananinha"
+}
+
+@token = {{SignIn.response.body.token}}
