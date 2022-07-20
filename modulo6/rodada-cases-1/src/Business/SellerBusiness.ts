@@ -4,6 +4,7 @@ import Authenticator from "../services/Authenticator";
 import HashManager from "../services/HashManager";
 import IdGenerator from "../services/IdGenerator";
 import { authenticationData } from "../types/authenticationDataInterface";
+import { loginModel } from "../types/loginDTO";
 import { sellerInput } from "../types/sellerInterface";
 
 export default class SellerBusiness {
@@ -22,7 +23,7 @@ export default class SellerBusiness {
         }
 
         if(email.includes("@") !== true || password.length < 6) {
-            throw new Error("Invalid email or password too short. Must be larger than 6.")
+           throw new Error( "Invalid email or password too short. Must be larger than 6.")
 
         }
         const id: string = this.idGenerator.createId() as string
@@ -31,7 +32,7 @@ export default class SellerBusiness {
         const verifySellersExistance = await this.sellerDatabase.getSellerByEmail(email)
 
         if(verifySellersExistance) {
-            throw new Error("This seller is already registered. Can't register twice.")
+            throw new Error ("This seller is already registered. Can't register twice.")
         }
 
         const newSeller = new SellerModel(id, name, email, hashedPass)
@@ -46,7 +47,30 @@ export default class SellerBusiness {
         return token;
     }
 
-    signIn = (login: loginModel) => {
+    signIn = async(login: loginModel):Promise<string> => {
+        
+            const {email, password} = login
 
+            if(!email || !password) {
+                throw new Error("One of the fields is empty, please check your request.")
+            }
+
+            if(email.includes("@") !== true) {
+                throw new Error("Invalid email format.")
+            }
+
+            const sellerResult = await this.sellerDatabase.getSellerByEmail(email)
+            const verifySellersPass = this.hashManager.compareHash(password, sellerResult.password)
+
+            if(!sellerResult || verifySellersPass === false) {
+                throw new Error("Invalid Credentials")
+            }
+
+            const payload: authenticationData = {
+                id: sellerResult.id
+            }
+
+            const token: string = this.authenticator.generateToken(payload)
+            return token;
     }
 } 

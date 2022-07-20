@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "tsc && node ./build/Controller/index.js",
-    "start-dev": "ts-node-dev ./src/Controller/index.ts",
+    "dev": "ts-node-dev ./src/Controller/index.ts",
     "build": "tsc"
   },
   "author": "Eduarda Pacheco",

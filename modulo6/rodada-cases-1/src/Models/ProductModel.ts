@@ -1,14 +1,12 @@
-import { PRODUCTS_GENDER, PRODUCTS_TYPES } from "../types/productInterface";
-
 export default class ProductModel {
     constructor(
         private id: string,
         private photo: string,
         private name: string,
-        private description: string | undefined,
         private price: number,
-        private type: PRODUCTS_TYPES,
-        private gender: PRODUCTS_GENDER
+        private type: string,
+        private gender: string,
+        private description: string
     ){}
 
     public getProducstId = (): string => {
@@ -23,7 +21,7 @@ export default class ProductModel {
         return this.name
     }
 
-    public getProductsDescription = (): string | undefined => {
+    public getProductsDescription = (): string => {
         return this.description
     }
 

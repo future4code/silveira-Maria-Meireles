@@ -1,6 +1,7 @@
 import SellerBusiness from "../Business/SellerBusiness";
 import { Request, Response } from 'express'
 import { sellerInput } from "../types/sellerInterface";
+import { loginModel } from "../types/loginDTO"
 
 export default class SellerController {
     constructor(
@@ -17,9 +18,9 @@ export default class SellerController {
                 password
             }
 
-            await this.sellerBusiness.signUp(newSeller)
+            const token: string = await this.sellerBusiness.signUp(newSeller)
 
-            res.status(201).send({message: "Seller registered on system!"})
+            res.status(201).send({message: "Seller registered on system!", token})
         } catch(error: any) {
             res.send(error.message)
         }
@@ -29,7 +30,7 @@ export default class SellerController {
         try {
             const {email, password} = req.body
 
-            const login: loginDTO = {
+            const login: loginModel = {
                 email,
                 password
             }

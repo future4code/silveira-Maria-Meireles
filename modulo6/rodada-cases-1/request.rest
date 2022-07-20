@@ -4,8 +4,8 @@ POST http://localhost:3306/seller/signUp
 Content-Type: application/json
 
 {
-    "name": "Maria Eduarda",
-    "email": "duda@benu.com",
+    "name": "clovinho",
+    "email": "colis@labenu.com",
     "password": "banana"
 }
 
@@ -22,7 +22,32 @@ Content-Type: application/json
 
 {
     "email": "duda@labenu.com",
-    "passoword": "bananinha"
+    "password": "bananinha"
 }
 
+###
+
 @token = {{SignIn.response.body.token}}
+
+###
+
+POST http://localhost:3306/product/register
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+    "photo": "https://amarotech-res.cloudinary.com/image/fetch/c_limit,f_auto,dpr_1,w_1920,q_auto/v1/https://amaroecp-res.cloudinary.com/image/upload/v1643404548/images/calca-wide-alfaiataria-essential-preto-01.jpg",
+    "name": "Calça Wide Alfaiataria Essential",
+    "price": "280.00",
+    "type": "calça",
+    "gender": "feminino",
+    "description": "Tamanhos disponíveis: P, M, G"
+}
+
+###
+
+GET http://localhost:3306/product/details/Calça Wide Alfaiataria Essentia
+Content-Type: application/json
+Authorization: {{token}}
+
+### 

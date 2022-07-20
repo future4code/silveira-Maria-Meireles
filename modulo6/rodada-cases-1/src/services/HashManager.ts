@@ -12,7 +12,7 @@ export default class HashManager {
         return cypherText;
     }
 
-    compareHash = async (cypherText: string, plainText: string): Promise<boolean> => {
-        return await bcrypt.compare(cypherText, plainText)
+    compareHash =  (plainText: string, cypherText: string): boolean => {
+        return  bcrypt.compareSync(plainText, cypherText)
     }
 }

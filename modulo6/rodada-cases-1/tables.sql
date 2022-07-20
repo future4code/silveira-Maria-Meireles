@@ -16,3 +16,5 @@ CREATE TABLE amaro_products (
 );
 
 ALTER TABLE amaro_products ADD COLUMN gender VARCHAR(255) NOT NULL;
+
+SELECT * FROM amaro_products;

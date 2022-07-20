@@ -19,7 +19,7 @@ export default class SellerDatabase extends BaseDatabase{
         }
     }
 
-    getSellerByEmail = async(email: string): Promise<SellerModel | undefined> => {
+    getSellerByEmail = async(email: string): Promise<any> => {
         try {
             const [verificationResult] = await this.getConnection()
             .select("*")

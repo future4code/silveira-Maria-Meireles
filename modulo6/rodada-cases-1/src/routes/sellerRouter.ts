@@ -19,4 +19,4 @@ const sellerController = new SellerController(
 export const sellerRouter = express.Router()
 
 sellerRouter.post("/signUp", sellerController.signUp)
-// sellerRouter.post("/signIn", sellerController.signIn)
+sellerRouter.post("/signIn", sellerController.signIn)
