@@ -15,7 +15,7 @@ export const Main = styled.div`
     }
 `
 
-export const loginForm = styled.form`
+export const LoginForm = styled.form`
     display: flex;
     flex-direction: column;
     height: 30%;
@@ -28,7 +28,7 @@ export const ButtonStyled = styled(Button)`
     background-color: #E8222E;
     color: #000000;
     width: 100%;
-    padding: 3px;
+    padding: 8px;
    }
 `
 
@@ -38,6 +38,6 @@ export const DivPassword = styled.div`
     justify-content: space-between;
 `
 
-export const MaterialInput = styled("TextField")`
+export const MaterialInput = styled(TextField)`
     width: 100%;
 `

@@ -3,11 +3,11 @@ export const goToLogin = (navigate) => {
 }
 
 export const goToSignUp = (navigate) => {
-    navigate("/feed")
+    navigate("/signUp")
 }
 
 export const goToFeed = (navigate) => {
-    navigate("/signUp")
+    navigate("/feed")
 }
 
 export const gotoSignUpAddress = (navigate) => {
