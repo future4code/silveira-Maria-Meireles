@@ -10,6 +10,7 @@ import {
 import { BASE_URL } from "../../constants/baseUrl";
 import RestaurantCard from "../../Components/RestaurantCard/RestaurantCard";
 import PagesHeader from "../../Components/PagesHeader/PagesHeader";
+import { FlashOffRounded } from "@mui/icons-material";
 
 const FeedPage = () => {
   const [restaurants, setRestaurants] = useState([]);
@@ -60,8 +61,37 @@ const FeedPage = () => {
       restaurants.map((restaurant) => {
         restaurantsArray.push(restaurant.category);
       });
-    setRestaurantCategory([...new Set(restaurantsArray)]);
+    
+    const removeEquals = [...new Set(restaurantsArray)]
+
+    let changePropertiesToObject = []
+
+    removeEquals.map((category) => {
+      const objectAux = {category, select: false}
+      return changePropertiesToObject.push(objectAux)
+    })
+
+    setRestaurantCategory(changePropertiesToObject)
   };
+
+  const swichCategory = (category) => {
+    setCategoryValue(category)
+
+    const result = restaurantCategory.map((cat) => {
+      if(category.category === cat) {
+        return {
+          ...cat,
+          select: true
+        }
+      } else {
+        return {
+          ...cat,
+          select: false
+        }
+      }
+    })
+    setRestaurantCategory(result)
+  }
 
   useEffect(() => {
     getRestaurants();
@@ -69,7 +99,7 @@ const FeedPage = () => {
 
   return (
     <>
-      <PagesHeader title={"FourFood"} />
+      <PagesHeader title={"FourFood"} backPage={false}/>
 
       <ContainerFeed>
         <StyledSearchInput
@@ -92,13 +122,13 @@ const FeedPage = () => {
           {restaurantCategory.map((category) => {
             return (
               <MenuItem
-                select={false}
-                key={category}
+                select={category.select}
+                key={category.category}
                 onClick={() => {
-                  setCategoryValue(category);
+                  swichCategory(category.category);
                 }}
               >
-                {category}
+                {category.category}
               </MenuItem>
             );
           })}

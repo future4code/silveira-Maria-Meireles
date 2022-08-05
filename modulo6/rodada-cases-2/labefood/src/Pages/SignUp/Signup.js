@@ -8,6 +8,7 @@ import Visibility from '@mui/icons-material/Visibility'
 import VisibilityOff from '@mui/icons-material/VisibilityOff'
 import { BASE_URL } from '../../constants/baseUrl';
 import { gotoSignUpAddress } from '../../Router/coordinator';
+import PagesHeader from '../../Components/PagesHeader/PagesHeader'
 
 const SignUp = () => {
 
@@ -76,6 +77,7 @@ const SignUp = () => {
 
     return (
     <Main>
+        <PagesHeader backPage/>
         <p> Cadastre-se </p> 
 
         <SignUpForm onSubmit = { onSubmitForm }>

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { BASE_URL } from '../../constants/baseUrl';
 import { goToFeed } from '../../Router/coordinator';
 import UseForm from '../../Hooks/UseForm';
+import PagesHeader from '../../Components/PagesHeader/PagesHeader'
 import { SignUpAddressForm, MaterialInput, Main, ButtonStyled } from './style';
 
 const SignUpAddress = () => {
@@ -43,6 +44,7 @@ const SignUpAddress = () => {
 
     return (
     <Main>
+        <PagesHeader backPage />
         <p> Registre seu endereço </p>
 
         <SignUpAddressForm onSubmit = { onSubmitAddressForm }>
