@@ -1,9 +1,10 @@
 import React from 'react'
+import BottomMenu from '../../Components/BottomMenu/BottomMenu'
 
 const Profile = () => {
     return (
     <div>
-        Profile
+       <BottomMenu page={"profile"} />
     </div> 
     )
 }

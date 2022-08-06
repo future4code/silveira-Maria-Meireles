@@ -10,7 +10,7 @@ import {
 import { BASE_URL } from "../../constants/baseUrl";
 import RestaurantCard from "../../Components/RestaurantCard/RestaurantCard";
 import PagesHeader from "../../Components/PagesHeader/PagesHeader";
-import { FlashOffRounded } from "@mui/icons-material";
+import BottomMenu from '../../Components/BottomMenu/BottomMenu'
 
 const FeedPage = () => {
   const [restaurants, setRestaurants] = useState([]);
@@ -59,7 +59,7 @@ const FeedPage = () => {
 
     restaurants &&
       restaurants.map((restaurant) => {
-        restaurantsArray.push(restaurant.category);
+        return restaurantsArray.push(restaurant.category);
       });
     
     const removeEquals = [...new Set(restaurantsArray)]
@@ -135,6 +135,8 @@ const FeedPage = () => {
         </MenuOptions>
 
         <RestaurantCards>{restaurantsFiltration}</RestaurantCards>
+      
+        <BottomMenu page={"home"}/>
       </ContainerFeed>
     </>
   );

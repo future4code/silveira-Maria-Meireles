@@ -36,6 +36,7 @@ const SignUpAddress = () => {
         .then((res) => {
             localStorage.setItem('token', res.data.token)
             goToFeed(navigate)
+            cleanForm()
         })
         .catch((error) => {
             console.log(error.response)

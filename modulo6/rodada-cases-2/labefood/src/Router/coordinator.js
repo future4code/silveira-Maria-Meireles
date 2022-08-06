@@ -10,6 +10,14 @@ export const goToFeed = (navigate) => {
     navigate("/")
 }
 
+export const goToCart = (navigate) => {
+    navigate("/cart")
+}
+
+export const goToProfile = (navigate) => {
+    navigate("/profile")
+}
+
 export const goToRestaurantDetails = (navigate, restaurantId) => {
     navigate(`/feed/${restaurantId}`)
 }

@@ -11,16 +11,8 @@ export const ProductCardContainer = styled.div`
 export const ProductImage = styled.img`
     width: 6rem;
     height: 7rem;
-    border-radius: 7px 7px 0 0;
-`
-
-export const ProductQuantity = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: solid 1px red;
-    width: 2.063rem;
-    height: 2.063rem;
+    border-radius: 7px 0 0 7px;
+    padding-right: 8px;
 `
 
 export const ProductNameAndQuantityBox = styled.div`
@@ -34,13 +26,13 @@ export const ProductName = styled.h3`
     letter-spacing: -0.39px;
     color: red;
     padding-bottom: 0.25rem;
+    padding-top: 1rem;
 `
 
 export const ProductInfoBox = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 1rem 0 0 1rem;
     flex-grow: 1;
 
 `
@@ -60,14 +52,41 @@ export const PriceAndButtonBox = styled.div`
 `
 
 export const ProductPriceInfo = styled.p`
-
+    font-family: Roboto;
+    font-size: 1rem;
+    letter-spacing: -0.39px;
+    padding: 0.25rem 0;
+    color: gray;
+    flex-grow: 1;
 `
 
-export const ProductInformButton = styled.button`
+export const ProductAddButton = styled.button`
     width: 5.625rem;
     height: 1.938rem;
     border-radius: 8px 0 8px 0;
     background-color: white;
     outline: 0;
-    border: 1px solid black;
+    border: 1px solid red;
+    color: red;
+`
+
+export const ProductRemovalButton = styled.button`
+    width: 5.625rem;
+    height: 1.938rem;
+    border-radius: 8px 0 8px 0;
+    background-color: white;
+    outline: 0;
+    border: 1px solid red;
+    color: red;
+`
+
+export const QuantityBox = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid red;
+    width: 2.063rem;
+    height: 2.063rem;
+    border-radius: 8px 0 8px 0;
+    color: red;
 `
