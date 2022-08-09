@@ -1,7 +1,7 @@
 ### Case de empregabilidade 01: Projeto back-end da AMARO.
 
 #### Sobre o sistema:
-O projeto é um desafio legado de um processo de seleção da empresa AMARO, que nos foi proposto pela Labenu
+O projeto é um desafio legado da empresa AMARO, que nos foi proposto pela Labenu
 para treinar a participação em projetos técnicos de processos de seleção.
 O sistema controla o registro de produtos, contendo os seguintes endpoints:
 
