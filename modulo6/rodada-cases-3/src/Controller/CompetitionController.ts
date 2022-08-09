@@ -22,4 +22,16 @@ export default class CompetitionController {
             res.send(error.message)
         }
     }
+
+    endCompetition = async(req: Request, res:Response):Promise<void> => {
+        const {competitionId} = req.body
+        try {
+            console.log(competitionId)
+            await this.competitionBusiness.endCompetition(competitionId)
+
+            res.status(200).send({message: "Competição finalizada. A partir de agora, não poderão ser registrados novos resultados."})
+        }catch (error: any) {
+            res.send(error.message)
+        }
+    }
 }

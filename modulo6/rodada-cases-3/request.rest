@@ -4,21 +4,30 @@ POST http://localhost:3306/competition/register
 Content-Type: application/json
 
 {
-    "name": "100 metros rasos",
-    "type": "cemmetros",
+    "name": "Lançamento de dardos",
+    "type": "dardos",
     "status": "inconcluida"
 }
 
 ###
 
-POST http://localhost:3306/result/localhost:3003/result/register
+POST http://localhost:3306/result/register
 Content-Type: application/json
 
 {
-    "competition": "",
-    "athleteName": "",
-    "result": "",
-    "unity": ""
+    "competition": "100 metros rasos",
+    "athleteName": "Jameo",
+    "result": "17943433.0",
+    "unity": "s"
+}
+
+### 
+
+PUT http://localhost:3306/competition/end
+Content-Type: application/json
+
+{
+    "competitionId": "2affeb35-87dd-4b45-8645-6a94459d88a8"
 }
 
 ### 

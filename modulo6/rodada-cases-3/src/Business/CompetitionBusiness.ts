@@ -35,4 +35,22 @@ export default class CompetitionBusiness {
 
         await this.competitionDatabase.insertCompetition(newCompetition)
     }
+
+    endCompetition = async(id: string):Promise<void> => {
+        if(!id) {
+            throw new Error("Você precisa enviar o id da competição para finalizá-la.")
+        }
+        
+        const verifyCompetitionStatus = await this.competitionDatabase.getCompetitionById(id)
+        console.log(verifyCompetitionStatus)
+        if(!verifyCompetitionStatus) {
+            throw new Error("Não há uma competição cadastrada com esse id.")
+        }
+
+        if(verifyCompetitionStatus.status.toLowerCase() === "concluida") {
+            throw new Error("Essa competição já está finalizada. Agora você pode acessar o ranking definitivo.")
+        }
+
+        await this.competitionDatabase.changeCompetitionStatus(id)
+    }
 }

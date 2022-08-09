@@ -23,4 +23,21 @@ export default class CompetitionDatabase extends BaseDatabase{
 
         return competitionResult
     }
+
+    getCompetitionById = async(id: string): Promise<any> => {
+        const [competitionResult] = await this.getConnection()
+        .select("*")
+        .from(this.tableName)
+        .where({id: id})
+
+        return competitionResult
+    }
+
+    changeCompetitionStatus = async(id: string): Promise<void> => {
+        await this.getConnection().raw(`
+        UPDATE ${this.tableName}
+        SET status = "concluida"
+        WHERE id = "${id}"
+        `)
+    }
 }

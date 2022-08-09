@@ -16,3 +16,4 @@ const competitionController = new CompetitionController(
 export const competitionRouter = express.Router()
 
 competitionRouter.post("/register", competitionController.createCompetition)
+competitionRouter.put("/end", competitionController.endCompetition)
