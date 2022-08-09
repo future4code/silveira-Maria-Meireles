@@ -1,0 +1,23 @@
+{
+  "name": "data",
+  "version": "1.0.0",
+  "description": "Case de processo seletivo da estante virtual",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc && node ./build/Controller/index.js",
+    "dev": "ts-node-dev ./src/Controller/index.ts"
+  },
+  "author": "Eduarda Pacheco",
+  "license": "ISC",
+  "dependencies": {
+    "@types/uuid": "^8.3.4",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "knex": "^2.2.0",
+    "mysql": "^2.18.1",
+    "ts-node-dev": "^2.0.0",
+    "uuid": "^8.3.2"
+  }
+}

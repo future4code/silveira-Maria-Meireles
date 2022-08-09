@@ -1,0 +1,24 @@
+###
+
+POST http://localhost:3306/competition/register
+Content-Type: application/json
+
+{
+    "name": "100 metros rasos",
+    "type": "cemmetros",
+    "status": "inconcluida"
+}
+
+###
+
+POST http://localhost:3306/result/localhost:3003/result/register
+Content-Type: application/json
+
+{
+    "competition": "",
+    "athleteName": "",
+    "result": "",
+    "unity": ""
+}
+
+### 
