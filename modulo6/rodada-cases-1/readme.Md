@@ -43,7 +43,8 @@ Endpoint para pegar os detalhes de um produto. Recebe o nome do produto por par�
 via headers.
 
 ##### Link para a documentação:
-colocar depois :)
+https://documenter.getpostman.com/view/20359123/VUjPJ5f6
+* A doocumentação ainda será atualizada
 
 ##### Tecnologias utilizadas:
 - TypeScript;
