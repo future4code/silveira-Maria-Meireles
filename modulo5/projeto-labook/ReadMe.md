@@ -6,6 +6,10 @@ Esse projeto simula um sistema parecido com o Facebook, onde podemos criar o nos
 
 <br>
 
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/QHQNwh5/LABOOK-1.png" alt="LABOOK-1" border="0"></a>
+
+<br>
+
 ## Tecnologias utilizadas :computer: 
 
 <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white"/>
@@ -49,3 +53,12 @@ Adiciona um novo post ao perfil do usuário. Possui verificação de login com o
 
 #### - Pegar um post:
 Pega um post pelo id dele. Possui verificação da existência desse post no sistema. Também verifica se o usuário está logado através do token de acesso.
+
+#### - Ver o feed:
+Pega o feed de posts com todos os posts das pessoas que o usuário segue. Possui verificação do token de autenticação e também verifica a existência dos posts.
+
+#### - Curtir um post:
+Curte um post através do id enviado. Possui verificação do token. Também verifica se esse post já foi curtido por esse usuário.
+
+#### - Descurtir um post:
+Descurte um post. Possui verificação de token de acesso. Também verifica se o post foi curtido antes de descurtir.
