@@ -15,9 +15,9 @@ POST http://localhost:3306/result/register
 Content-Type: application/json
 
 {
-    "competition": "100 metros rasos",
-    "athleteName": "Jameo",
-    "result": "17943433.0",
+    "competition": "lançamento de dardos",
+    "athleteName": "teste1221213",
+    "result": [1.9, 1.2, 29.60],
     "unity": "s"
 }
 
@@ -31,3 +31,12 @@ Content-Type: application/json
 }
 
 ### 
+
+GET http://localhost:3306/result/ranking
+Content-Type: application/json
+
+{
+    "name": "100 metros rasos"
+}
+
+###

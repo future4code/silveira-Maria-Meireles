@@ -14,7 +14,7 @@ export default class ResultBusiness {
 
     createResult = async(resultInput: resultDTO): Promise<void> => {
         const {competition, athleteName, result, unity} = resultInput
-
+        
         if(!competition || !athleteName || !result || !unity) {
             throw new Error("Todos os campos devem estar preenchidos para cadastrar um novo resultado.")
         }
@@ -29,20 +29,28 @@ export default class ResultBusiness {
             throw new Error("Este atleta já tem sua pontuação registrada na competição.")
         }
 
-        if(!Number(result)){
-            throw new Error("O registro de resultados aceita apenas números. Verifique os dados enviados.")
-        }
-
         const verifyCompetitionStatus = await this.competitionDatabase.getCompetitionByName(competition)
 
         if(verifyCompetitionStatus.status.toLowerCase() === "concluida"){
             throw new Error("Não podem ser registradas novas pontuações. Essa competição está encerrada.")
         }
-
         const id: string = this.idGenerator.generateId()
-        const newScore: ResultModel = new ResultModel(id, competition, athleteName, Number(result), unity) 
 
-        await this.resultDatabase.insertResult(newScore)
+        if(competition.toLowerCase() === "lançamento de dardos") {
+            let majorResult:number = 0
+            for(let i = 0; i < result.length; i++) {
+                Number(result[i]) > majorResult ? majorResult = Number(result[i]) : majorResult 
+                
+            }
+            const newScore = new ResultModel(id, competition, athleteName, majorResult, unity)
+            await this.resultDatabase.insertResult(newScore)
+        } else {
+            if(!Number(result)) {
+                throw new Error("Apenas valores numéricos são aceitos no campo result.")
+            }
+            const newScore: ResultModel = new ResultModel(id, competition, athleteName, Number(result), unity) 
+            await this.resultDatabase.insertResult(newScore)
+        }
     }
 
     getCompetitionRanking = async(name: string):Promise<any[]> => {
