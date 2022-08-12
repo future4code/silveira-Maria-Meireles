@@ -14,7 +14,7 @@ https://opposite-eye.surge.sh/
 <img width="280px" src="https://user-images.githubusercontent.com/93545669/184409129-6a7bf601-6189-438e-baf7-4f1de70c2ca9.jpg" />
 
 #### Feed:
-<img src="https://user-images.githubusercontent.com/93545669/184410353-556c62f0-4dc2-42db-b2e5-e7d5fb4d8ff3.jpg" />
+<img width="280px" src="https://user-images.githubusercontent.com/93545669/184410353-556c62f0-4dc2-42db-b2e5-e7d5fb4d8ff3.jpg" />
 
 #### Continuação do Feed:
 <img width="280px" src="https://user-images.githubusercontent.com/93545669/184410484-f7015f80-b9de-4f74-9a0d-aacdd5e9ff8f.jpg" />
