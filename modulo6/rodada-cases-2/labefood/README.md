@@ -7,26 +7,3 @@ https://opposite-eye.surge.sh/
 
 ### Páginas da aplicação:
 
-#### Login:
-
-
-#### Cadastro: 
-
-
-#### Feed:
-
-
-#### Feed:
-
-
-#### Detalhes restaurante: 
-
-
-#### Carrinho:
-
-
-#### Editar perfil:
-
-
-#### Editar endereço:
-
