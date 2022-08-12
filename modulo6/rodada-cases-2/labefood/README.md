@@ -9,32 +9,24 @@ https://opposite-eye.surge.sh/
 
 #### Login:
 
-WhatsApp Image 2022-08-12 at 11.11.17.jpeg
 
 #### Cadastro: 
 
-WhatsApp Image 2022-08-12 at 11.11.17 (1).jpeg
 
 #### Feed:
 
-WhatsApp Image 2022-08-12 at 11.11.17 (2).jpeg
 
 #### Feed:
 
-WhatsApp Image 2022-08-12 at 11.11.17 (3).jpeg
 
 #### Detalhes restaurante: 
 
-WhatsApp Image 2022-08-12 at 11.11.18.jpeg
 
 #### Carrinho:
 
-WhatsApp Image 2022-08-12 at 11.11.18 (1).jpeg
 
 #### Editar perfil:
 
-WhatsApp Image 2022-08-12 at 11.12.15.jpeg
 
 #### Editar endereço:
 
-WhatsApp Image 2022-08-12 at 11.12.15 (1).jpeg
