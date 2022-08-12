@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom' 
 import axios from 'axios'
 import PagesHeader from '../../Components/PagesHeader/PagesHeader'
 import useRequestData from '../../Hooks/UseRequestData'
@@ -9,7 +10,6 @@ import { useGlobal } from '../../GlobalState/GlobalStateContext'
 import { Button } from "@mui/material" 
 import {
     Main,
-    MainCart,
     CartConfig,
     ProfileInfo,
     InfoRestaurant,
@@ -18,20 +18,26 @@ import {
     Payment,
     Freight,
     Total,
-    Form
+    Form,
+    ButtonStyled,
+    PaymentMethodStyle
 } from './style'
 import { Key } from '@mui/icons-material'
+import UseProttectedPage from '../../Hooks/UseProttectedPage'
+import { goToFeed } from '../../Router/coordinator'
 
 
 const Cart = () => {
+    UseProttectedPage()
     
+    const navigate = useNavigate()
     const clientInfo = useRequestData({}, `${BASE_URL}/profile`)
     const [payment, setPayment] = useState("")
     const [fullPrice, setFullPrice] = useState(0)
 
     const {states, setters} = useGlobal()
     const {cart, restaurant} = states
-    const {setOrder} = setters
+    const {setOrder, setCart} = setters
 
     const [paymentMethod] = useState([
         'money',
@@ -72,15 +78,18 @@ const Cart = () => {
             })
             .then((res) => {
                 setOrder(res.data.order)
+                setCart([])
+                goToFeed(navigate)
             })
             .catch((error) => {
                 console.log(error.response)
-                alert(error.data.message)
+                alert(error.response)
             })
     }
 
     const onSubmitPlaceOrder = (event) => {
         event.preventDefault()
+        placeOrder()
     }
 
     useEffect(() => {
@@ -90,11 +99,7 @@ const Cart = () => {
 
     return (
     <Main>
-        <PagesHeader title={"Carrinho"} backPage/>
-
-        <MainCart>
-            <p> Meu carrinho </p>
-        </MainCart>
+        <PagesHeader title={"Carrinho"} backPage logout/>
 
         <CartConfig>
             <ProfileInfo>
@@ -105,7 +110,7 @@ const Cart = () => {
             <InfoRestaurant>
                 <p> {restaurant.name} </p>
                 <p> {restaurant.address} </p>
-                <p> {restaurant.deliveryTime} - {Number(restaurant.deliveryTime) + 10} </p> 
+                <p> {restaurant.deliveryTime ? restaurant.deliveryTime: ""} - {restaurant.deliveryTime ? Number(restaurant.deliveryTime) + 10: ""} </p> 
             </InfoRestaurant>
 
             <CartInfo>
@@ -123,24 +128,24 @@ const Cart = () => {
             </CartInfo>
 
             <Payment>
-                <Freight> Frete {new Intl.NumberFormat('pt-BR', {
+                <Freight> Frete {restaurant.shipping? new Intl.NumberFormat('pt-BR', {
                     style: 'currency',
                     currency: 'BRL',
-                }).format(restaurant.shipping)
+                }).format(restaurant.shipping) : "R$ 00,00"
                 }
                 </Freight>
 
                 <Total>
                     <p> Subtotal </p>
-                    <p> {new Intl.NumberFormat('pt-BR', {
+                    <p> {fullPrice ? new Intl.NumberFormat('pt-BR', {
                     style: 'currency',
                     currency: 'BRL',
-                }).format(fullPrice)
+                }).format(fullPrice) : "R$ 00,00"
                 } </p>
                 </Total>
 
-                <p> Forma de pagamento </p>
-                <Form>
+                <PaymentMethodStyle> Forma de pagamento </PaymentMethodStyle>
+                <Form onSubmit={onSubmitPlaceOrder}>
                     {
                        paymentMethod && paymentMethod.map((key) => {
                             return(
@@ -158,7 +163,7 @@ const Cart = () => {
                             ) 
                         })
                     }
-                    <Button type="submit"> Confirmar compra </Button> 
+                    <ButtonStyled type="submit"> Confirmar compra </ButtonStyled> 
                 </Form>
             </Payment>
         </CartConfig>

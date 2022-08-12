@@ -27,7 +27,7 @@ const GlobalState = ({ children }) => {
 
     const states = {cart, restaurant, order}
     const requests = {addProductToCart, removeProductInCart}
-    const setters = {setOrder}
+    const setters = {setOrder, setCart}
 
     return (
         <GlobalStateContext.Provider value ={{states, requests, setters}}>

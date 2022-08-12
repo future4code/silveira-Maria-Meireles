@@ -13,7 +13,7 @@ const UseForm = (initialState) => {
         setForm(initialState)
     }
 
-    return [form, onChangeForm, cleanForm]
+    return [form, onChangeForm, cleanForm, setForm]
 }
 
 export default UseForm;

@@ -11,8 +11,12 @@ import {
 } from "./style";
 import RestaurantProductCard from "../../Components/RestaurantProductCard/RestaurantProductCard";
 import PagesHeader from "../../Components/PagesHeader/PagesHeader";
+import BottomMenu from '../../Components/BottomMenu/BottomMenu'
+import UseProttectedPage from '../../Hooks/UseProttectedPage'
 
 const RestaurantDetails = () => {
+  UseProttectedPage()
+
   const token = localStorage.getItem("token");
   const { restaurantId } = useParams();
   const [categoriesList, setCategoriesList] = useState([]);
@@ -52,7 +56,7 @@ const RestaurantDetails = () => {
 
   return (
     <RestaurantContainer>
-      <PagesHeader title={"Restaurante"} backPage={true} />
+      <PagesHeader title={"Restaurante"} backPage logout/>
       <RestaurantCard>
         <RestaurantDetailsCard restaurant={restaurantDetails} />
         {restaurantDetails.products &&
@@ -77,6 +81,8 @@ const RestaurantDetails = () => {
             );
           })}
       </RestaurantCard>
+
+      <BottomMenu />
     </RestaurantContainer>
   );
 };

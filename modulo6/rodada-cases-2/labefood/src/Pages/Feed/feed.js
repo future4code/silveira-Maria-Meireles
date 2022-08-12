@@ -10,9 +10,12 @@ import {
 import { BASE_URL } from "../../constants/baseUrl";
 import RestaurantCard from "../../Components/RestaurantCard/RestaurantCard";
 import PagesHeader from "../../Components/PagesHeader/PagesHeader";
-import BottomMenu from '../../Components/BottomMenu/BottomMenu'
+import BottomMenu from '../../Components/BottomMenu/BottomMenu';
+import UseProttectedPage from "../../Hooks/UseProttectedPage";
 
 const FeedPage = () => {
+  UseProttectedPage()
+
   const [restaurants, setRestaurants] = useState([]);
   const [restaurantCategory, setRestaurantCategory] = useState([]);
   const [categoryValue, setCategoryValue] = useState("");
@@ -99,7 +102,7 @@ const FeedPage = () => {
 
   return (
     <>
-      <PagesHeader title={"FourFood"} backPage={false}/>
+      <PagesHeader title={"FourFood"} backPage={false} logout/>
 
       <ContainerFeed>
         <StyledSearchInput

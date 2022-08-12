@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { BASE_URL } from '../../constants/baseUrl'
-import { Main, LoginForm, ButtonStyled, DivPassword, MaterialInput } from './style'
+import { Main, LoginForm, ButtonStyled,ButtonStyled2, DivPassword, MaterialInput, StyledHome, HeaderWord } from './style'
 import { IconButton } from '@mui/material'
 import Visibility from '@mui/icons-material/Visibility'
 import VisibilityOff from '@mui/icons-material/VisibilityOff'
-import { goToFeed } from '../../Router/coordinator'
+import { goToFeed, goToSignUp } from '../../Router/coordinator'
 import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
@@ -60,8 +60,7 @@ const Login = () => {
 
     return (
         <Main>
-            <p> Entrar </p>
- 
+            <StyledHome/> 
             <LoginForm onSubmit={ onSubmitLogin }>
                 <MaterialInput
                 error = {checkEmailErr}
@@ -106,6 +105,8 @@ const Login = () => {
 
                 <ButtonStyled type="submit"> Entrar </ButtonStyled>
             </LoginForm>
+
+            <ButtonStyled2 onClick={() => goToSignUp(navigate)}> Não possui cadastro? Crie sua conta </ButtonStyled2> 
         </Main>
     )
 }

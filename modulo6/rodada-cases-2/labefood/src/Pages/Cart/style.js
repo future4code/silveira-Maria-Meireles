@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Button } from '@mui/material'
 
 export const Main = styled.div`
     display: flex;
@@ -12,6 +13,7 @@ export const MainCart = styled.div`
     justify-content: center;
     align-items: center;
     font-size: 1.5rem;
+    font-family: Roboto;
 `
 
 export const CartConfig = styled.div`
@@ -30,6 +32,7 @@ export const ProfileInfo = styled.div`
     align-items: center;
     justify-content: center;
     font-size: 1rem;
+    font-family: Roboto;
     margin-top: 8px;
     width: 100%;
 `
@@ -42,6 +45,7 @@ export const InfoRestaurant = styled.div`
     margin-top: 10px;
     p:nth-child(1){
         color: red;
+        font-family: Roboto;
     }
 `
 
@@ -53,10 +57,12 @@ export const CartInfo = styled.div`
 `
 
 export const EmptyCart = styled.p`
-    font-size: 2rem;
+    font-size: 1rem;
+    color: grey;
     font-family: Roboto;
     letter-spacing: -0.39px;
     text-align: center;
+    padding: 15px;
 `
 
 export const Payment = styled.div`
@@ -74,6 +80,7 @@ export const Freight = styled.p`
     display: flex;
     justify-content: flex-end;
     margin: 5px;
+    font-family: Roboto;
 `
 
 export const Total = styled.div`
@@ -83,13 +90,15 @@ export const Total = styled.div`
 
     p:nth-child(2){
         color: red;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
+        font-family: Roboto;
     }
 `
 
 export const Form = styled.form`
     display: flex;
     flex-direction: column;
+    margin-bottom: 25px;
     div{
         margin: 5px;
     }
@@ -103,4 +112,18 @@ export const Form = styled.form`
         height: 20px;
         width: 20%;
     }
+`
+export const ButtonStyled = styled(Button)`
+&&{
+ background-color: #E8222E;
+ color: #000000;
+ width: 90%;
+ padding: 12px;
+margin: auto;
+}
+`
+
+export const PaymentMethodStyle = styled.p`
+font-family: Roboto;
+font-size: 1.2rem;
 `

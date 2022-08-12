@@ -1,19 +1,26 @@
-import React from 'react'
-import axios from 'axios'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { BASE_URL } from '../../constants/baseUrl';
-import { goToFeed } from '../../Router/coordinator';
-import UseForm from '../../Hooks/UseForm';
+import UseForm from '../../Hooks/UseForm'
+import UseProttectedPage from '../../Hooks/UseProttectedPage'
+import { BASE_URL } from '../../constants/baseUrl'
 import PagesHeader from '../../Components/PagesHeader/PagesHeader'
-import { SignUpAddressForm, MaterialInput, Main, ButtonStyled } from './style';
-import UseProttectedPage from '../../Hooks/UseProttectedPage';
+import axios from 'axios'
+import {
+    Main,
+    ButtonStyled,
+    MaterialInput,
+    SignUpAddressForm
+} from './style'
+import { goToProfile } from '../../Router/coordinator'
 
-const SignUpAddress = () => {
+
+const addressEdit = () => {
     UseProttectedPage()
 
     const navigate = useNavigate()
     const token = localStorage.getItem('token')
-    const [form, onChangeForm, cleanForm] = UseForm({
+
+    const [form, onChangeForm, cleanForm, setForm] = UseForm({
         "street": "",
         "number": "",
         "neighbourhood": "",
@@ -21,6 +28,27 @@ const SignUpAddress = () => {
         "state": "",
         "complement": ""
     })
+
+    const getPreviousAddress = async() => {
+        await axios.get(`${BASE_URL}/profile/address`, {
+            headers: {
+                auth: token
+            }
+        })
+        .then((res) => {
+            setForm({
+                "street": res.data.address.street,
+                "number": res.data.address.number,
+                "neighbourhood": res.data.address.neighbourhood,
+                "city": res.data.address.city,
+                "state": res.data.address.state,
+                "complement": res.data.address.complement
+            })
+        })
+        .catch((error) => {
+            console.log(error.response)
+        })
+    }
 
     const onSubmitAddressForm = (event) => {
         event.preventDefault()
@@ -37,7 +65,6 @@ const SignUpAddress = () => {
         
         .then((res) => {
             localStorage.setItem('token', res.data.token)
-            goToFeed(navigate)
             cleanForm()
         })
         .catch((error) => {
@@ -45,11 +72,14 @@ const SignUpAddress = () => {
         })
     }
 
+    useEffect(() => {
+        getPreviousAddress()
+    }, [])
+    
     return (
-    <Main>
-        <PagesHeader backPage />
-        <p> Registre seu endereço </p>
-
+    <>
+        <PagesHeader title={"Editar endereço"} backPage />
+        <Main>
         <SignUpAddressForm onSubmit = { onSubmitAddressForm }>
             <MaterialInput
                 id = "outlined-basic"
@@ -123,11 +153,12 @@ const SignUpAddress = () => {
                 required
             />
 
-            <ButtonStyled type="submit"> Salvar </ButtonStyled>
+            <ButtonStyled type="submit" onClick={() => goToProfile(navigate)}> Salvar </ButtonStyled>
         </SignUpAddressForm>
 
-    </Main>
+        </Main>
+    </>
     )
 }
 
-export default SignUpAddress;
+export default addressEdit

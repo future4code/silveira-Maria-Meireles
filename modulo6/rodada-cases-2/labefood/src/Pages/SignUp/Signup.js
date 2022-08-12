@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import UseForm from '../../Hooks/UseForm';
-import { DivPassword, Main, MaterialInput, ButtonStyled, SignUpForm } from './style';
+import { DivPassword, Main, MaterialInput, ButtonStyled, SignUpForm, StyledHome } from './style';
 import { IconButton } from '@mui/material'
 import Visibility from '@mui/icons-material/Visibility'
 import VisibilityOff from '@mui/icons-material/VisibilityOff'
@@ -77,9 +77,9 @@ const SignUp = () => {
 
     return (
     <Main>
-        <PagesHeader backPage/>
-        <p> Cadastre-se </p> 
+        <PagesHeader title={"Cadastre-se"} backPage/>
 
+        <StyledHome />
         <SignUpForm onSubmit = { onSubmitForm }>
 
             <MaterialInput
