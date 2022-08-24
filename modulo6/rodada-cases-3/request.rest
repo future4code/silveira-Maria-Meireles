@@ -1,0 +1,42 @@
+###
+
+POST http://localhost:3306/competition/register
+Content-Type: application/json
+
+{
+    "name": "Lançamento de dardos",
+    "type": "dardos",
+    "status": "inconcluida"
+}
+
+###
+
+POST http://localhost:3306/result/register
+Content-Type: application/json
+
+{
+    "competition": "lançamento de dardos",
+    "athleteName": "teste1221213",
+    "result": [1.9, 1.2, 29.60],
+    "unity": "s"
+}
+
+### 
+
+PUT http://localhost:3306/competition/end
+Content-Type: application/json
+
+{
+    "competitionId": "2affeb35-87dd-4b45-8645-6a94459d88a8"
+}
+
+### 
+
+GET http://localhost:3306/result/ranking
+Content-Type: application/json
+
+{
+    "name": "100 metros rasos"
+}
+
+###
